@@ -8,8 +8,8 @@ sessionInfo()
 #############################################
 
 # Set path
-my.path = "~/Documents/JHMI-Research/charmData/ShyamBiswal/" # Local path
-# my.path = "~/TestRun/ShyamBiswal/"
+# my.path = "~/Documents/JHMI-Research/charmData/ShyamBiswal/" # Local path
+my.path = "~/TestRun/ShyamBiswal/circos_plot_test/"
 setwd(my.path)
 # Import libraries required
 library(RCircos)
@@ -85,9 +85,9 @@ RCircos.List.Parameters() # For reference in Rout file
 # Step 4: Make RCircos plots
 ################################################
 
-out.file = "BiswalCircos.png"
+out.file = "BiswalCircos1.png"
 png(file = out.file, height = 25, width = 25,res=250,units = "in")
-plot(main="Inner Tracks: H460 Knocking-Genes; Outer Tracks: H460 Parent-genes")
+#plot(main="Inner Tracks: H460 Knocking-Genes; Outer Tracks: H460 Parent-genes")
 RCircos.Set.Plot.Area()
 # Plot chromosome ideogram
 RCircos.Chromosome.Ideogram.Plot();
