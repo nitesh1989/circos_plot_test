@@ -8,8 +8,9 @@ sessionInfo()
 #############################################
 
 # Set path
-my.path = "~/TestRun/ShyamBiswal/"
-
+my.path = "~/Documents/JHMI-Research/charmData/ShyamBiswal/" # Local path
+# my.path = "~/TestRun/ShyamBiswal/"
+setwd(my.path)
 # Import libraries required
 library(RCircos)
 library(BiocGenerics)
@@ -64,10 +65,10 @@ rcircos.position = RCircos.Get.Plot.Positions()
 
 params = RCircos.Get.Plot.Parameters()
 
-params$radius.len = 3.0;
+params$radius.len = 2.0;
 params$base.per.unit =1000;
 params$track.padding = 0.02;
-params$track.height = 0.3;
+params$track.height = 0.2;
 
 params$chrom.width = 0.2;
 params$chr.name.pos = 2.24;
@@ -85,7 +86,7 @@ RCircos.List.Parameters() # For reference in Rout file
 ################################################
 
 out.file = "BiswalCircos.png"
-png(file = out.file, height = 22, width = 22,res=500,units = "in")
+png(file = out.file, height = 25, width = 25,res=250,units = "in")
 plot(main="Inner Tracks: H460 Knocking-Genes; Outer Tracks: H460 Parent-genes")
 RCircos.Set.Plot.Area()
 # Plot chromosome ideogram
