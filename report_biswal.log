@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.16)  9 JAN 2014 13:21
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.16)  9 JAN 2014 17:52
 entering extended mode
 **report_biswal.tex
 
@@ -377,19 +377,23 @@ Package pdftex.def Info: distribution_parent.png used on input line 154.
  [4 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_test/distribut
 ion_knocking.png>] [5 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_p
 lot_test/distribution_parent.png>]
-<BiswalCircos.png, id=30, 6273.4375pt x 6273.4375pt>
-File: BiswalCircos.png Graphic file (type png)
- <use BiswalCircos.png>
-Package pdftex.def Info: BiswalCircos.png used on input line 196.
-(pdftex.def)             Requested size: 313.69025pt x 313.69025pt.
+<BiswalCircos4.png, id=30, 1806.75pt x 1806.75pt>
+File: BiswalCircos4.png Graphic file (type png)
+ <use BiswalCircos4.png>
+Package pdftex.def Info: BiswalCircos4.png used on input line 196.
+(pdftex.def)             Requested size: 542.02919pt x 542.02919pt.
 
-[6 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_test/BiswalCirc
-os.png>]
+Overfull \hbox (72.27417pt too wide) in paragraph at lines 196--197
+[][]  
+ []
+
+[6] [7 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_test/Biswal
+Circos4.png>] [8]
 (C:\Users\nturaga1\Documents\TestRun\ShyamBiswal\circos_plot_test\report_biswal
 .aux) ) 
 Here is how much of TeX's memory you used:
  2739 strings out of 493921
- 36865 string characters out of 3136445
+ 36870 string characters out of 3136445
  97570 words of memory out of 3000000
  6010 multiletter control sequences out of 15000+200000
  11213 words of font info for 43 fonts, out of 3000000 for 9000
@@ -404,9 +408,9 @@ fb><C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fonts/type1/public/a
 msfonts/cm/cmr12.pfb><C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fo
 nts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/nturaga1/Downloads/MiKTeX/setu
 p/MiKTekInstall/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report_biswal.pdf (6 pages, 3268515 bytes).
+Output written on report_biswal.pdf (8 pages, 2175150 bytes).
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
+ 65 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

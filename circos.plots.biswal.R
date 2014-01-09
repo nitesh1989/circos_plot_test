@@ -38,6 +38,26 @@ parent.x = curate.devaPeaks.to.rcircos(parent)
 knock.x = curate.devaPeaks.to.rcircos(knock)
 
 
+# Curate knocking pathways first
+# Curate to Rcircos
+
+collect.pathways = function(status,path) {
+    files = list.files(path,full.names=T)
+    new_df = data.frame()
+    for (i in 1:length(files)) {     
+        x = read.csv(files[i])
+        pathwayName = gsub(pattern = paste0("_",status,".csv"),replacement="",x=(gsub(".+/","",files[i])))
+        x = x[,c(4:7,1:3,7:22)]
+        knock_df = data.frame(x,pathway = pathwayName,pathwayGene = paste0(x$name,"-",pathwayName))
+        new_df = rbind(new_df,knock_df)
+    }
+    return(new_df)
+}
+
+knock_df = collect.pathways(status = "H460_knock","Pathways_knock")
+parent_df = collect.pathways(status= "H460_parent","Pathways_parent")
+
+
 ################################################
 # Step 2: Initialize base of Circos plot
 ################################################
@@ -50,7 +70,7 @@ cyto.info = UCSC.HG19.Human.CytoBandIdeogram;
 chr.exclude = NULL;
 # Determine tracks inside and outside
 tracks.inside = 5;
-tracks.outside = 4;
+tracks.outside = 5;
 
 # Initialize RCircos Core components
 RCircos.Set.Core.Components(cyto.info, chr.exclude=chr.exclude,tracks.inside=tracks.inside,tracks.outside= tracks.outside);
@@ -65,7 +85,30 @@ rcircos.position = RCircos.Get.Plot.Positions()
 
 params = RCircos.Get.Plot.Parameters()
 
-params$radius.len = 2.0;
+# params$radius.len = 0.5;
+# params$base.per.unit =1000;
+# params$track.padding = 0.02;
+# params$track.height = 0.2;
+# 
+# params$chrom.width = 0.1;
+# params$chr.ideog.pos = 1.1;
+# params$chr.name.pos = 1.25;
+# 
+# params$text.size = 0.4;
+
+# ORIGINAL
+# params$radius.len = 2.0;
+# params$base.per.unit =1000;
+# params$track.padding = 0.02;
+# params$track.height = 0.2;
+# 
+# params$chrom.width = 0.2;
+# params$chr.name.pos = 2.24;
+# 
+# params$text.size = 0.6;
+# 
+
+params$radius.len = 2.50;
 params$base.per.unit =1000;
 params$track.padding = 0.02;
 params$track.height = 0.2;
@@ -75,8 +118,6 @@ params$chr.name.pos = 2.24;
 
 params$text.size = 0.6;
 
-
-
 RCircos.Reset.Plot.Parameters(params);
 
 RCircos.List.Parameters() # For reference in Rout file
@@ -85,8 +126,8 @@ RCircos.List.Parameters() # For reference in Rout file
 # Step 4: Make RCircos plots
 ################################################
 
-out.file = "BiswalCircos1.png"
-png(file = out.file, height = 25, width = 25,res=250,units = "in")
+out.file = "BiswalCircos4.png"
+png(file = out.file, height = 25, width = 25,res=750,units = "in")
 #plot(main="Inner Tracks: H460 Knocking-Genes; Outer Tracks: H460 Parent-genes")
 RCircos.Set.Plot.Area()
 # Plot chromosome ideogram
@@ -104,6 +145,19 @@ RCircos.Gene.Connector.Plot(genomic.data=parent.x,track.num=1,side="out")
 
 RCircos.Line.Plot(line.data=knock.x,data.col=4,track.num=3,side="in")
 RCircos.Line.Plot(line.data=parent.x,data.col=4,track.num=3,side = "out")
+
+################################################
+# Step 5: Plot Pathways
+################################################
+
+# Plot in R Circos
+
+RCircos.Gene.Name.Plot(gene.data= knock_df,name.col= which(colnames(knock_df) == "pathwayGene"),track.num=5,side="in")
+RCircos.Gene.Connector.Plot(genomic.data=knock_df,track.num=4,side = "in")
+
+RCircos.Gene.Name.Plot(gene.data= parent_df,name.col= which(colnames(parent_df) == "pathwayGene"),track.num=5,side="out")
+RCircos.Gene.Connector.Plot(genomic.data=parent_df,track.num=4,side = "out")
+
 
 
 dev.off()
