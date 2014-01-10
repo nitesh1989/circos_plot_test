@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.16)  9 JAN 2014 17:52
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.16)  10 JAN 2014 15:17
 entering extended mode
 **report_biswal.tex
 
@@ -376,29 +376,29 @@ Package pdftex.def Info: distribution_parent.png used on input line 154.
 (pdftex.def)             Requested size: 343.28166pt x 340.27042pt.
  [4 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_test/distribut
 ion_knocking.png>] [5 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_p
-lot_test/distribution_parent.png>]
-<BiswalCircos4.png, id=30, 1806.75pt x 1806.75pt>
-File: BiswalCircos4.png Graphic file (type png)
- <use BiswalCircos4.png>
-Package pdftex.def Info: BiswalCircos4.png used on input line 196.
-(pdftex.def)             Requested size: 542.02919pt x 542.02919pt.
+lot_test/distribution_parent.png>] [6]
+<BiswalCircosMain.png, id=33, 2168.1pt x 2168.1pt>
+File: BiswalCircosMain.png Graphic file (type png)
+ <use BiswalCircosMain.png>
+Package pdftex.def Info: BiswalCircosMain.png used on input line 260.
+(pdftex.def)             Requested size: 542.02368pt x 542.02368pt.
 
-Overfull \hbox (72.27417pt too wide) in paragraph at lines 196--197
+Overfull \hbox (72.26866pt too wide) in paragraph at lines 260--261
 [][]  
  []
 
-[6] [7 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_test/Biswal
-Circos4.png>] [8]
+[7] [8 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_test/Biswal
+CircosMain.png>] [9]
 (C:\Users\nturaga1\Documents\TestRun\ShyamBiswal\circos_plot_test\report_biswal
 .aux) ) 
 Here is how much of TeX's memory you used:
  2739 strings out of 493921
- 36870 string characters out of 3136445
- 97570 words of memory out of 3000000
+ 36885 string characters out of 3136445
+ 101570 words of memory out of 3000000
  6010 multiletter control sequences out of 15000+200000
  11213 words of font info for 43 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,11n,43p,464b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,11n,43p,464b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fonts/type1/publ
 ic/amsfonts/cm/cmbx10.pfb><C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInsta
 ll/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/nturaga1/Downloads/MiKTe
@@ -408,9 +408,9 @@ fb><C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fonts/type1/public/a
 msfonts/cm/cmr12.pfb><C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fo
 nts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/nturaga1/Downloads/MiKTeX/setu
 p/MiKTekInstall/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report_biswal.pdf (8 pages, 2175150 bytes).
+Output written on report_biswal.pdf (9 pages, 2002125 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
+ 68 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

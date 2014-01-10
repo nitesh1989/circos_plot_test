@@ -180,20 +180,84 @@ A regression based DMR-finding after correcting for batch effects pipeline was u
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Comparisons}
+\section*{Pathway Comparisons}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Both the list of Knocking genes and parent genes were compared with a list of selected pathways.
 
+\begin{enumerate}
+\item Cell Cycle                                 
+\item Complete Homeobox (HOX) Genes                      
+\item Complete Human Inflammatory Response and Autoimmunity 
+\item Complete Human Tumor Suppressor Genes              
+\item Complete Stem Cell Transcription Factors            
+\item Complete Stress and Toxicity                         
+\item Cytokine Production                                
+\item DNA Repair 
+\item Human Epithelial to Mesenchymal Transition (EMT)    
+\item Human Notch Signaling Pathway                      
+\item Human T-Cell B-Cell Activation Methylation         
+\item Human T Helper Cell Differentiation                
+\item Human Tumor Suppressor Genes                        
+\item Inflammatory Response and Autoimmunity               
+\item Polycomb and Trithorax Complexes                     
+\item Stem Cell Transcription Factors                    
+\item TGF f BMP Signaling Pathway                          
+\item Toll-Like Receptor Signaling Pathway               
+\item WNT Signaling Pathway                              
+\end{enumerate}
+
+
+Very few pathway genes matched with the H460 knocking genes and the H460 parent genes. 
+
+The H460 knocking genes have only 29 genes in common with the pathways. The following result from R shows you which pathways and how many genes from that pathway. The result, for the names of the genes is stored in "pathway\_genes\_knock.csv". 
+
+\vspace{0.5in}
+
+\begin{verbatim}
+> table(knock_df$pathway)
+
+                              Cell_Cycle            Complete_Homeobox_(HOX)_Genes 
+                                       1                                        6 
+   Complete_Human_Tumor_Suppressor_Genes Complete_Stem_Cell_Transcription_Factors 
+                                       3                                        5 
+              Complete_Stress_&_Toxicity                      Cytokine_Production 
+                                       6                                        1 
+                              DNA_Repair            Human_Notch_Signaling_Pathway 
+                                       2                                        1 
+            Human_Tumor_Suppressor_Genes           Polycomb_&_Trithorax_Complexes 
+                                       1                                        1 
+         Stem_Cell_Transcription_Factors     Toll-Like_Receptor_Signaling_Pathway 
+                                       1                                        1 
+\end{verbatim}
+
+
+
+The H460 parent genes have only two genes in two pathways, and stored in "pathways\_genes\_parent.csv".
+
+\begin{verbatim}
+> table(parent_df$pathway)
+
+Complete_Stem_Cell_Transcription_Factors          Stem_Cell_Transcription_Factors 
+                                       1                                        1 
+\end{verbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Plots and Results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Circos plot was made using RCircos, the inner track refers to the H460 knocking genes and the outer track refers to the H460 Parent genes.
+Circos plot was made using RCircos, the inner track refers to the H460 parent genes and the outer track refers to the H460 knocking genes.
+
+{\bf NOTE:} Everything on the inside of the chromosome ideogram is the inner track. Everything on the outside of the ideogram is the outer track. Due to scaling issues, random genes have been omitted. Please refer the data files for more accurate results.
 
 As it can be seen from the circos plot, very few chromosomes contribute to the methylated regions, including the sex chromosomes. The plot next to the gene names correspond to the peak values. It is easy to infer from this plot where there is a high frequency of methylated regions.
 
-\includegraphics[scale = 0.3]{BiswalCircos4.png}
+The pathways and the corresponding gene in that particular pathway are also plotted in the Circos plot in the inner and the outer tracks respectively.
+
+{\bf REFER: BiswalCircosMain.png}
+
+
+\includegraphics[scale = 0.25]{BiswalCircosMain.png}
 
 
 
@@ -226,6 +290,9 @@ As it can be seen from the circos plot, very few chromosomes contribute to the m
 	
 	\item   Rafael A. Irizarry, Martin Aryee, Hector Corrada Bravo, Kasper D. Hansen and	Harris A. Jaffee (). bumphunter: Bump Hunter. R package version 1.0.0.
 		
+	\item RCircos: an R package for Circos 2D track plots
+	
+	
  \end{enumerate}
 
  
