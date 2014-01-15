@@ -57,6 +57,11 @@ collect.pathways = function(status,path) {
 knock_df = collect.pathways(status = "H460_knock","Pathways_knock")
 parent_df = collect.pathways(status= "H460_parent","Pathways_parent")
 
+collect.genes = function(row,pathway){pathwayrow$name}
+
+
+
+BiocGenerics::table(knock_df$pathway,knock_df$name)
 
 ################################################
 # Step 2: Initialize base of Circos plot
@@ -157,7 +162,6 @@ RCircos.Gene.Name.Plot(gene.data= knock_df,name.col= which(colnames(knock_df) ==
 
 RCircos.Gene.Name.Plot(gene.data= parent_df,name.col= which(colnames(parent_df) == "pathwayGene"),track.num=4,side="in")
 # RCircos.Gene.Connector.Plot(genomic.data=parent_df,track.num=4,side = "in")
-
 
 
 dev.off()

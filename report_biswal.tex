@@ -2,6 +2,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage[margin=1in]{geometry}
+\usepackage[table]{xcolor}
 \usepackage{fancyhdr}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt plus 1pt}
@@ -35,7 +36,9 @@ Data from Shyam Biswal, used to compare the differential methylation regions of 
 \section*{Data Description}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Data was generated from two color Nimblegen microarrays. The raw Nimblegen data was in the form of {\tt .tif} images and the corresponding array design files were given for building the annotation package {\tt 100929\_HG19\_Deluxe\_Prom\_Meth\_HX1}  with {\tt pdInfoBuilder}.
+Data was generated from two color Nimblegen 2.1M oligonucleotide microarrays. The raw Nimblegen data was in the form of {\tt .tif} images and the corresponding array design files were given for building the annotation package {\tt 100929\_HG19\_Deluxe\_Prom\_Meth\_HX1} by Nimblegen. 
+
+There were a total of 6 samples. The 2.1M Platform refers to the high-density Roche NimbleGen 2.1 million-feature arrays, i.e, 2.1M probes on each array 
 
 Array images were processed with DEVA-v1.2 (Nimblegen software for automated feature extraction and data analysis). The TIF files were processed and converted to {\tt .xys} files for analysis. The TIF files were also processed with DEVA using the DNA methylation work flow to identify peaks and generate a result for each sample.
 
@@ -53,7 +56,7 @@ Array quality scores were generated with {\tt charm::qcReport}, and data quality
 {\tt Refer: qcReport.pdf}
 
 
-Charm fails to find DMR’s both while taking into account surrogate variables(SV) and not while not accounting for SV's. This might be because the image quality is poor after hybridization with a lot of variability in 3 out of the 6 images. The case control being used is the “H460\_parent” vs “H460\_knockin”. No other annotation is recorded in the experimental metrics {\tt .xlsx} file given.
+Charm fails to find DMR’s both while taking into account surrogate variables(SV) and not while not accounting for SV's. This might be because the image quality is poor after hybridization with a lot of variability in 3 out of the 6 images. The case control being used is the “H460\_parent” vs “H460\_knock-in”. No other annotation is recorded in the experimental metrics {\tt .xlsx} file given.
 
 
 
@@ -111,14 +114,14 @@ This analysis uses the Peaks files generated from DEVA-v1.2, using the standard 
 
 Sequential intersections, based on the number of peaks identified in each sample, was done in decreasing order for each experimental status. This step results in all the genes within each sample which are intersecting.
 
-We find the common genes between “H460\_knocking” and “H460\_parent", and remove these genes from the intersected lists. We then order them by distance from the transcription start site(TSS).
+We find the common genes between “H460\_knock-in” and “H460\_parent", and remove these genes from the intersected lists. We then order them by distance from the transcription start site(TSS).
 
-{\tt NOTE:  Files are attached as “knockin\_genes\_distFromTSS.csv” and “parent\_genes\_distFromTSS.csv”. The distance is ordered in decreasing order of since the Max distance is a smaller positive number.}
+{\tt NOTE:  Files are attached as “knock-in\_genes\_distFromTSS.csv” and “parent\_genes\_distFromTSS.csv”. The distance is ordered in decreasing order of since the Max distance is a smaller positive number.}
 
 The only features left in the result are transcription start sites, other possible feature is CpG Island (column name  is  FEATURE TRACK). The distribution of the distance from the TSS is also shown for both status types. The window for the Distance from the TSS is measured by  -5000 to +5000 , so window size is 10,000 bp (column name is SHORTEST\_DISTANCE\_FROM\_FEATURE\_TO\_DATA\_POINT).
 
 
-{\bf H460\_knocking}
+{\bf H460\_knock-in}
 
 \begin{verbatim}
 
@@ -208,9 +211,9 @@ Both the list of Knocking genes and parent genes were compared with a list of se
 \end{enumerate}
 
 
-Very few pathway genes matched with the H460 knocking genes and the H460 parent genes. 
+Very few pathway genes matched with the H460 knock-in genes and the H460 parent genes. 
 
-The H460 knocking genes have only 29 genes in common with the pathways. The following result from R shows you which pathways and how many genes from that pathway. The result, for the names of the genes is stored in "pathway\_genes\_knock.csv". 
+The H460 knock-in genes have only 29 genes in common with the pathways. The following result from R shows you which pathways and how many genes from that pathway. The result, for the names of the genes is stored in "pathway\_genes\_knock.csv". 
 
 \vspace{0.5in}
 
@@ -231,7 +234,40 @@ The H460 knocking genes have only 29 genes in common with the pathways. The foll
                                        1                                        1 
 \end{verbatim}
 
+\begin{tabular}{|c|c|}
 
+\hline Cell Cycle  &  1 \\                               
+\hline Complete Homeobox (HOX) Genes  & 6 \\                    
+\hline Complete Human Inflammatory Response and Autoimmunity & 3\\
+\hline Complete Human Tumor Suppressor Genes  & 5 \\
+\hline Complete Stem Cell Transcription Factors     & 6 \\       
+\hline Complete Stress and Toxicity   & 1 \\    
+\hline Cytokine Production  & 2 \\              
+\hline DNA Repair & 1 \\
+\hline Human Epithelial to Mesenchymal Transition (EMT)    
+\hline Human Notch Signaling Pathway                      
+\hline Human T-Cell B-Cell Activation Methylation         
+\hline Human T Helper Cell Differentiation                
+\hline Human Tumor Suppressor Genes                        
+\hline Inflammatory Response and Autoimmunity               
+\hline Polycomb and Trithorax Complexes                     
+\hline Stem Cell Transcription Factors                    
+\hline TGF f BMP Signaling Pathway                          
+\hline Toll-Like Receptor Signaling Pathway               
+\hline WNT Signaling Pathway                              
+\hline
+\end{tabular} 
+
+\begin{center}
+\rowcolors{1}{green}{pink}
+
+\begin{tabular}{lll}
+odd     & odd  \\
+even    & even \\
+odd     & odd  \\
+even    & even \\
+\end{tabular}
+\end{center}
 
 The H460 parent genes have only two genes in two pathways, and stored in "pathways\_genes\_parent.csv".
 
@@ -246,7 +282,7 @@ Complete_Stem_Cell_Transcription_Factors          Stem_Cell_Transcription_Factor
 \section*{Plots and Results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Circos plot was made using RCircos, the inner track refers to the H460 parent genes and the outer track refers to the H460 knocking genes.
+Circos plot was made using RCircos, the inner track refers to the H460 parent genes and the outer track refers to the H460 knock-in genes.
 
 {\bf NOTE:} Everything on the inside of the chromosome ideogram is the inner track. Everything on the outside of the ideogram is the outer track. Due to scaling issues, random genes have been omitted. Please refer the data files for more accurate results.
 

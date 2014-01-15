@@ -3,7 +3,7 @@
 
 date()
 sessionInfo()
-
+setwd("~/TestRun/ShyamBiswal/circos_plot_test/")
 
 ####################################################################
 # 1.
@@ -15,8 +15,9 @@ library(minfi) # To get the annotation from minfi
 
 setwd("~/TestRun/ShyamBiswal/")
 
-loadDir = "~/TestRun/ShyamBiswal/circos_plot_test/"
+loadDir = "~/TestRun/ShyamBiswal/objs/"
 storageDir = "~/TestRun/ShyamBiswal/"
+
 
 load(file.path(loadDir,"p.rda"))
 load(file.path(loadDir,"otherstuff02.rda"))
@@ -25,7 +26,8 @@ load(file.path(loadDir,"pd02.rda"))
 ####################################################################
 
 # Beta values
-betas = getBeta(object)
+betas = p
+#betas = getBeta(object)
 
 #Exposure
 exposure = ifelse(test = (pd$status == "H460_parent"), yes = 1,no = 0)
@@ -33,29 +35,44 @@ exposure = ifelse(test = (pd$status == "H460_parent"), yes = 1,no = 0)
 ####################################################################
 # ANNOTATION
 annot = getAnnotation(object)
+load("~/TestRun/pd.100929.hg19.deluxe.prom.meth.hx1/data/bgSequence.rda")
+head(bgSequence)
 
+load("~/TestRun/pd.100929.hg19.deluxe.prom.meth.hx1/data/pmSequence.rda")
+head(pmSequence)
+
+annot = read.table("~/TestRun/Charm Analysis/charmData/100929_HG19_Deluxe_Prom_Meth_HX1.ndf",sep = "\t",header = T,stringsAsFactors=F)
 # Curate annotation to fit function
 annot_df = as.data.frame(annot)
+GENE_NAME = data.frame(rep("",times=2186885))
+annot_x = data.frame(IlmnID = annot_df$PROBE_ID,
+                     Infinium_Design_Type = annot_df$DMD,CHR = as.data.frame(CHR),
+                     Coordinate_36 = annot_df$POSITION,Gene_Name = "",UCSC_RefGene_Group = "",
+                     UCSC_CpG_Islands_Name = "",Relation_to_UCSC_CpG_Island = "")
+
+
+
+
 
 # Create New data table for the Aclustering annotation 
 
-annot_aclust = data.frame(IlmnID = as.character(rownames(annot_df)),Infinium_Design_Type = annot_df$Type)
-annot_aclust$CHR = gsub(pattern = "chr",replacement="",x= annot_df$chr)
-annot_aclust$Coordinate_36 = annot_df$pos
-annot_aclust$Gene_Name = annot_df$UCSC_RefGene_Name
-annot_aclust$UCSC_RefGene_Group = annot_df$UCSC_RefGene_Group
-annot_aclust$UCSC_CpG_Islands_Name = annot_df$Islands_Name
-annot_aclust$Relation_to_UCSC_CpG_Island = annot_df$Relation_to_Island
-annot_original = annot
-annot = annot_aclust
-
-#Cast annot as a data table
-annot = as.data.table(annot)
+# annot_aclust = data.frame(IlmnID = as.character(rownames(annot_df)),Infinium_Design_Type = annot_df$Type)
+# annot_aclust$CHR = gsub(pattern = "chr",replacement="",x= annot_df$chr)
+# annot_aclust$Coordinate_36 = annot_df$pos
+# annot_aclust$Gene_Name = annot_df$UCSC_RefGene_Name
+# annot_aclust$UCSC_RefGene_Group = annot_df$UCSC_RefGene_Group
+# annot_aclust$UCSC_CpG_Islands_Name = annot_df$Islands_Name
+# annot_aclust$Relation_to_UCSC_CpG_Island = annot_df$Relation_to_Island
+# annot_original = annot
+# annot = annot_aclust
+# 
+# #Cast annot as a data table
+# annot = as.data.table(annot)
 
 ######################################################################
 
 
-clusters.list = assign.to.clusters(betas=betas,annot=annot)
+clusters.list = assign.to.clusters(betas=betas,annot=annot_x)
 length(clusters.list)
 
 # Covariates can be categorical or continuous, but cannot have intercept term in the,
