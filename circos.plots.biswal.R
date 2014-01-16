@@ -8,8 +8,8 @@ sessionInfo()
 #############################################
 
 # Set path
-# my.path = "~/Documents/JHMI-Research/charmData/ShyamBiswal/" # Local path
-my.path = "~/TestRun/ShyamBiswal/circos_plot_test/"
+my.path = "~/Documents/JHMI-Research/charmData/ShyamBiswal/" # Local path
+#my.path = "~/TestRun/ShyamBiswal/circos_plot_test/"
 setwd(my.path)
 # Import libraries required
 library(RCircos)
@@ -59,9 +59,24 @@ parent_df = collect.pathways(status= "H460_parent","Pathways_parent")
 
 collect.genes = function(row,pathway){pathwayrow$name}
 
+make.table = function(pathway.df) {
+    pathway.df = knock_df
+    levels.df = levels(pathway.df$pathway)
+    levels.df
+    #     new.df = data.frame(pathway = list(),genes = list())
+    new.df = data.frame()
+    for (i in seq_along(levels.df)){
+        i=1
+        genes = as.character(pathway.df$name[pathway.df$pathway == levels.df[i]])
+        genes
+        new.df = rbind(new.df, data.frame(as.character(levels.df[i]),as.list(genes)))
+        new.df
+    }
 
+    return(new.df)
+}
 
-BiocGenerics::table(knock_df$pathway,knock_df$name)
+knock.new.df = make.table(knock_df)
 
 ################################################
 # Step 2: Initialize base of Circos plot
