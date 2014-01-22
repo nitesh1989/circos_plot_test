@@ -7,6 +7,7 @@
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{caption}
+\captionsetup[table]{justification=raggedright,singlelinecheck=off,labelfont=bf}
 \usepackage{subcaption}
 \restylefloat{table}
 \usepackage{fancyhdr}
@@ -29,44 +30,35 @@
 \newcommand\ANDREWID{nturaga1@jhmi.edu}     % your andrew id
 %\newcommand\HWNUM{1}              % the homework number
 
-\title{Shyam Biswal : MeDIP on 2.1M Nimblegen Array}
+\title{Differntial Methylation Analysis of H460 Parent and H460 Knock-in cell lines on 2.1M Nimblegen Array}
 \author{Nitesh Turaga}
 \maketitle
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Data Description}
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-Data from Shyam Biswal, used to compare the differential methylation regions of H460 Knock-in cell line and H460 parent cell line.
 
-The data was generated from two color Nimblegen 2.1M oligonucleotide microarrays. The raw Nimblegen data was in the form of {\tt .tif} images and the corresponding array design files were given for building the annotation package {\tt 100929\_HG19\_Deluxe\_Prom\_Meth\_HX1} by Nimblegen. 
-
-There were a total of 6 samples, 3 for each cell line(H460 knock-in and H460 parent). The 2.1M Platform refers to the high-density Roche NimbleGen 2.1 million-feature arrays, i.e, 2.1M probes on each array 
-
-Array images were processed with DEVA-v1.2 (Nimblegen software for automated feature extraction and data analysis). The TIF files were processed and converted to {\tt .xys} files for analysis. {\tt .xys} files report the, {\bf X} - coordinate of the feature on the image, {\bf Y}-coordinate of the feature on the image, and the {\bf S}ignal - the flourescence intensity of the pixels that make the feature.
-
-
-The TIF files were also processed with DEVA using the DNA methylation work flow to identify peaks and generate a result for each sample.
+To compare the differential methylation regions of H460 Knock-in cell line and H460 parent cell line.The data was generated from Nimblegen 2.1M oligonucleotide microarrays. The raw Nimblegen data were {\tt .tif} images. There were a total of 6 samples, 3 for each cell line(H460 knock-in and H460 parent).Array images were processed with DEVA-v1.2 (Nimblegen software for automated feature extraction and data analysis). The TIF files were processed and converted to {\bf XYS} files for analysis. These files report the, {\bf X} - coordinate of the feature on the image, {\bf Y}-coordinate of the feature on the image, and the {\bf S}ignal - the flourescence intensity of the pixels that make the feature. The TIF files were also processed with DEVA using the DNA methylation work flow to identify peaks and generate a result for each sample.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section*{Preliminary Assessments}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-General QC-analyses brought to light that the signal intensities and local enrichment at methylated sites were not really large. Initial array quality assessment was done using the Bioconductor {\tt charm-package} on the {\tt .xys} files. The data quality can be assessed by looking at the Enriched channel in the MeDIP array, where we expect every probe to have a signal. Since, the enriched channel contains the only methylated DNA, a successful hybridization would indicate a strong signal. The array signal is calculated as the average percentile rank of the signal probes among the background probes. The score ranges between 0 to 100, where 100 indicates the ideal scenario or perfect hybridization. This quality score is calculated before any kind of normalization is done on the arrays.
+General QC-analyses brought to light that the signal intensities and local enrichment at methylated sites were not large. The data quality was assessed by looking at the Enriched channel in the MeDIP array, where we expect every probe to have a signal. Since, the enriched channel has methylated DNA, a successful hybridization would indicate a signal. The array signal is calculated as the average percentile rank of the signal probes among the background probes. The score ranges between 0 to 100, where 100 indicates the ideal scenario or perfect hybridization. This quality score is calculated before any kind of normalization is done on the arrays.
 
+
+\captionof{table}{Array quality scores}
 \begin{table}[H]
     \begin{tabular}{|l|l|l|}
     \hline
     Sample ID                        & Status       & Quality Score     \\ \hline
-    542586A01\_Slot9\_2012-07-24\_H460 & H460\_parent & 59.6804601609024  \\ \hline
-    542654A01\_Slot9\_2012-07-25\_H460 & H460\_knockin & 74.9611413105766  \\ \hline
-    542671A01\_Slot6\_2012-07-24\_H460 & H460\_knockin & 71.2294097946914  \\ \hline
-    542707A01\_Slot12\_2012-07-25\_H460 & H460\_knockin & 76.519565668383   \\ \hline
-    542737A01\_Slot13\_2012-07-24\_H460 & H460\_parent & 64.4412397468657  \\ \hline
-    542857A01\_Slot18\_2012-07-24\_H460 & H460\_parent & 69.8646821319654  \\ \hline
+    542586A01\_Slot9\_2012-07-24\_H460 & H460\_parent & 59.6  \\ \hline
+    542737A01\_Slot13\_2012-07-24\_H460 & H460\_parent & 64.4  \\ \hline
+    542857A01\_Slot18\_2012-07-24\_H460 & H460\_parent & 69.8  \\ \hline
+	542671A01\_Slot6\_2012-07-24\_H460 & H460\_knockin & 71.2  \\ \hline
+    542654A01\_Slot9\_2012-07-25\_H460 & H460\_knockin & 74.9  \\ \hline    
+    542707A01\_Slot12\_2012-07-25\_H460 & H460\_knockin & 76.5   \\ \hline
     \end{tabular}
-    \caption{Array quality scores}
+
 \end{table}
 
 \includegraphics[scale=0.5]{qcImage1.png}
@@ -74,7 +66,7 @@ General QC-analyses brought to light that the signal intensities and local enric
 \includegraphics[scale=0.5]{qcImage2.png}
 
 
-As we can in Table 1, the quality score of the H460 Parent arrays are pretty low, which indicates hybridization problems.
+As we can in Table 1, the quality score of the H460 Parent arrays are pretty low.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section*{The CHARM Algorithm}
@@ -93,40 +85,39 @@ After estimating the DNA methylation values in terms of percentage methylation, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-Bumphunter is used to estimate regions for which the genomic profile deviates from a baseline value(cut off). It is implemented to detect differntially methylated genomic regions between two populations. It is also a regression based approach.
+Bumphunter used to estimate regions for which the genomic profile deviates from a baseline value(cut off). It is implemented to detect differntially methylated genomic regions between two populations. It is also a regression based approach.It reports the result, with a table of candidate differentially methylated regions and the corresponding annotation for wach region.
 
-It reports the result, with a table of candidate differentially methylated regions and the corresponding annotation for wach region.
-
-{\bf Analysis using Bumphunter}
-
-
-\begin{enumerate}
-
-\item Run  1
-
-Initially ran {\tt bumphunter} on the data, with cutoff value 1.0, this failed to find any bumps. The sensitivity of the cutoff was not enough to catch any DMRs in the sample set. Bumphunter is better used for large sample sets, for better performance. 
-
-
-\item Run  2
-
-Bumphunter, with the inbuilt argument to pickCutoff was run. The cutoff chosen by bumphunter was at 0.41, bumps found 28206. The number of DMRs/bumps of length greater than four is 0. This result is not useful for analysis as the length of the DMRs are too small.
-
-%bumps.rda file attached. 
-
-The distribution of the length of DMRs found, is shown below. Most of them are single CpG sites of length 1. This does not work for a significant analysis.
-
-\end{enumerate}
-
-\begin{table}[H]
-	\begin{tabular}{|l|l|l|l|}
-	\hline
-	Length(L) &   1     & 2   & 3 \\ \hline
-    Number of DMRs & 27981 & 222 & 3 \\ \hline
-	\end{tabular}
-	\caption{Distribution of Bumps}
-\end{table}
-
-\includegraphics[scale=0.4]{bumpsDistribution.png}
+%
+%{\bf Analysis using Bumphunter}
+%
+%
+%\begin{enumerate}
+%
+%\item Run  1
+%
+%Initially ran {\tt bumphunter} on the data, with cutoff value 1.0, this failed to find any bumps. The sensitivity of the cutoff was not enough to catch any DMRs in the sample set. Bumphunter is better used for large sample sets, for better performance. 
+%
+%
+%\item Run  2
+%
+%Bumphunter, with the inbuilt argument to pickCutoff was run. The cutoff chosen by bumphunter was at 0.41, bumps found 28206. The number of DMRs/bumps of length greater than four is 0. This result is not useful for analysis as the length of the DMRs are too small.
+%
+%%bumps.rda file attached. 
+%
+%The distribution of the length of DMRs found, is shown below. Most of them are single CpG sites of length 1. This does not work for a significant analysis.
+%
+%\end{enumerate}
+%
+%\begin{table}[H]
+%	\begin{tabular}{|l|l|l|l|}
+%	\hline
+%	Length(L) &   1     & 2   & 3 \\ \hline
+%    Number of DMRs & 27981 & 222 & 3 \\ \hline
+%	\end{tabular}
+%	\caption{Distribution of Bumps}
+%\end{table}
+%
+%\includegraphics[scale=0.4]{bumpsDistribution.png}
 
 %\begin{verbatim}
 %Argument description for bumphunter,
@@ -145,30 +136,27 @@ The distribution of the length of DMRs found, is shown below. Most of them are s
 %
 %\end{verbatim}
 
-\vspace{0.2in}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section*{The Nimblegen Algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The standard Nimblegen algorithms were used to compute the normalized data and identify peaks of enrichment, coinciding with methylated regions. Next the data was transformed into a more usable format, i.e. the peaks near known transcription start sites (TSSs) were identiﬁed, according to 2 different cutoffs for the maximal distance between a peak and a TSS:
-\begin{itemize}
-	\item  -500 to +500, the default cutoff
-	\item  -5000 to +1500, a custom cutoff
-\end{itemize}
+The standard Nimblegen algorithms were used to compute the normalized data and identify peaks of enrichment, coinciding with methylated regions. Peaks near known transcription start sites (TSS) were identified, with different cutoffs between maximal distance between a peak and TSS.
 
-Peaks were identified for each sample using both of these cut offs. 
+%\begin{itemize}
+%	\item  -500 to +500, the default cutoff
+%	\item  -5000 to +1500, a custom cutoff
+%\end{itemize}
 
-{\bf Analysis using Peaks files from DEVA}
+%{\bf Analysis using Peaks files from DEVA}
 
-For each cell line, the genes which were common in each sample were identified, i.e, gene names which intersect. All the genes which were identified jointly in both cell lines were removed, making each gene set unique and exclusive to the specific cell line. Both sets of genes, were ordered by distance from the Transcription start site. 944 genes were identified in H460 knock-in cell line and 349 in H460 parent. (Table 1)
+In each cell line, the genes which were intersecting among all the samples were identified. All the genes which were identified jointly in both cell lines were removed, making each gene set unique and exclusive for a specific cell line. Both sets of unique and exclusive genes, were ordered by distance from the Transcription start site. 944 genes were identified in H460 knock-in cell line and 349 in H460 parent. (Table 2)
 
 %Sequential intersections, based on the number of peaks identified in each sample, was done in decreasing order for each experimental status. This step results in all the genes within each sample which are intersecting.
 
 %We find the common genes between “H460\_knock-in” and “H460\_parent", and remove these genes from the intersected lists. We then order them by distance from the transcription start site(TSS).
 
-
+\captionof{table}{Number of features in each cell line}
 \begin{table}[H]
 \centering
 	\begin{tabular}{|l|l|l|}
@@ -177,7 +165,6 @@ For each cell line, the genes which were common in each sample were identified, 
 		H460 Knock in & transcription start site & 944 \\ \hline
 		H460 Parent & transcription start site & 349 \\ \hline
 	\end{tabular}
-	\caption{Number of features in each cell line}
 \end{table}
 
 {\tt NOTE:  Files are attached as “knock-in\_genes\_distFromTSS.csv” and “parent\_genes\_distFromTSS.csv”. The regions are ordered in a decreasing order based on the distance from TSS.}
@@ -185,7 +172,7 @@ For each cell line, the genes which were common in each sample were identified, 
 
 The only features left in the result are transcription start sites, other possible feature is CpG Island (column name  is  FEATURE TRACK). The distribution of the distance from the TSS is also shown for both cell lines. Column name is SHORTEST\_DISTANCE\_FROM\_FEATURE\_TO\_DATA\_POINT.
 
-
+\captionof{table}{Summary of Feature distance from data point}
 \begin{table}[H]
 \centering
     \begin{tabular}{|l|l|l|l|l|l|l|}
@@ -194,10 +181,9 @@ The only features left in the result are transcription start sites, other possib
    H460 Knock in  & -4998.0 & -3363.0 & -1916.0 & -1956.0 & -569.8 & 995.0  \\ \hline
    H460 Parent & -4975 &  -3669 &  -2474 &  -2223 &   -718  &   997  \\ \hline
     \end{tabular}
-    \caption{Summary of Feature distance from data point}
 \end{table}
 
-
+\captionof{table}{Distribution of Shortest distance from feature to data point}
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.4\textwidth}
@@ -214,12 +200,12 @@ The only features left in the result are transcription start sites, other possib
   \label{fig:sub2}
 \end{subfigure}
 
-\caption{Distribution of Shortest distance from feature to data point}
 \label{fig:test}
 \end{figure}
 
 
 
+\newpage
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -253,6 +239,10 @@ Both the list of H460 Knock-in genes and H460 parent genes were compared with a 
 Very few pathway genes matched with the H460 knock-in genes and the H460 parent genes. 
 
 The H460 knock-in genes have only 29 genes in common with the pathways(listed in Table 5). The following result from shows you the pathways and the genes along with gene description. The result, for the names of the genes is stored in "pathway\_genes\_knock.csv". 
+
+\newpage
+
+\captionof{table}{H460 Knock-in gene with corresponding pathways}
 
 \begin{table}[H]
 	\resizebox{\columnwidth}{!}{%
@@ -289,13 +279,12 @@ The H460 knock-in genes have only 29 genes in common with the pathways(listed in
     STAT3  & signal transducer and activator of transcription 3 (acute-phase response factor)      & Stem\_Cell\_Transcription\_Factors       \\
     IRAK1  & interleukin-1 receptor-associated kinase 1                                            & Toll-Like\_Receptor\_Signaling\_Pathway  \\ \hline
     \end{tabular}}
-     \caption {H460 Knock-in gene with corresponding pathways }
 \end{table}
 
 
 The H460 parent genes have only 2 genes in two pathways(Table 6) , and stored in "pathways\_genes\_parent.csv".
 
-
+\captionof{table}{H460 parent gene with corresponding pathways }
 \begin{table}[H]
     \begin{tabular}{|l|l|l|}
     \hline
@@ -303,26 +292,8 @@ The H460 parent genes have only 2 genes in two pathways(Table 6) , and stored in
     AR   & androgen receptor & Complete\_Stem\_Cell\_Transcription\_Factors \\ 
     AR   & androgen receptor & Stem\_Cell\_Transcription\_Factors       \\ \hline
     \end{tabular}
-    \caption {H460 parent gene with corresponding pathways }
 \end{table}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Plots and Results}
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Circos plot was made using RCircos, the inner track refers to the H460 parent genes and the outer track refers to the H460 knock-in genes.
-
-{\bf NOTE:} Everything on the inside of the chromosome ideogram is the inner track. Everything on the outside of the ideogram is the outer track. Due to scaling issues, few genes have been omitted. Please refer the data files for more accurate results.
-
-As it can be seen from the circos plot, very few chromosomes contribute to the methylated regions, including the sex chromosomes. The plot next to the gene names correspond to the peak values. It is easy to infer from this plot where there is a high frequency of methylated regions.
-
-The pathways and the corresponding gene in that particular pathway are also plotted in the Circos plot in the inner and the outer tracks respectively.
-
-{\bf REFER: BiswalCircosMain.png}
-
-
-\includegraphics[scale = 0.25]{BiswalCircosMain.png}
 
 
 
@@ -345,11 +316,6 @@ List of R-packages used for analysis:
 
 \end{enumerate}
 
-%Extracting the percentage methylation values from the raw data was done using {\tt charm::methp}, where the default arguments were used to normalize. The normalization methods included were spatial normalization(to correct for spatial artifacts), background subtraction(to estimate and remove the background signal before computing the log-ratios), loess within sample normalization and quantile between sample normalization.
-%
-%These percentage methylation values are on a logit scale.
-%
-%A regression based DMR-finding after correcting for batch effects pipeline was used in this analysis. Removing batch effects and using surrogate variables in finding DMRs ({\tt refer sva-package}) have been shown to reduce dependence on unknown noise in the data set.
 
 
 
