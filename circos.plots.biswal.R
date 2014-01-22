@@ -8,8 +8,8 @@ sessionInfo()
 #############################################
 
 # Set path
-my.path = "~/Documents/JHMI-Research/charmData/ShyamBiswal/" # Local path
-#my.path = "~/TestRun/ShyamBiswal/circos_plot_test/"
+#my.path = "~/Documents/JHMI-Research/charmData/ShyamBiswal/" # Local path
+my.path = "~/TestRun/ShyamBiswal/circos_plot_test/"
 setwd(my.path)
 # Import libraries required
 library(RCircos)
@@ -19,6 +19,11 @@ library(Biobase)
 # Import Peaks data from Shywam Biswals
 parent = read.csv("parent_genes_distFromTSS.csv",stringsAsFactors = FALSE)
 knock = read.csv("knockin_genes_distFromTSS.csv",stringsAsFactors = FALSE)
+
+# Import TSS change
+parent_TSS = read.csv("parent_genes_distFromTSS_change.csv",stringsAsFactors = FALSE)
+knock_TSS = read.csv("knockin_genes_distFromTSS_change.csv",stringsAsFactors = FALSE)
+
 
 
 ################################################

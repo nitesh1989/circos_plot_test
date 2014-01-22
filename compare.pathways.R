@@ -76,4 +76,20 @@ intersectPathways(dataSet=dataSet,dataName=dataName,pathToSave=pathToSave)
 
 
 
+# Function Calls TSS Change
+setwd("~/TestRun/Gene_Lists/Gene_Lists_CSV")
+dataSet = "~/TestRun/ShyamBiswal/circos_plot_test/knockin_genes_distFromTSS_change.csv"
+dataName = "H460_knock"
+pathToSave = "~/TestRun/ShyamBiswal/circos_plot_test/Pathways_knock_TSS_change//"
+intersectPathways(dataSet=dataSet,dataName=dataName,pathToSave=pathToSave)
+
+
+setwd("~/TestRun/Gene_Lists/Gene_Lists_CSV")
+dataSet = "~/TestRun/ShyamBiswal/circos_plot_test/parent_genes_distFromTSS_change.csv"
+dataName = "H460_parent"
+pathToSave = "~/TestRun/ShyamBiswal/circos_plot_test/Pathways_parent_TSS_change/"
+intersectPathways(dataSet=dataSet,dataName=dataName,pathToSave=pathToSave)
+
+
+
 undebug(intersectPathways)
