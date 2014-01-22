@@ -7,6 +7,8 @@
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{hyperref}
+
 \captionsetup[table]{justification=raggedright,singlelinecheck=off,labelfont=bf}
 \usepackage{subcaption}
 \restylefloat{table}
@@ -72,12 +74,16 @@ As we can in Table 1, the quality score of the H460 Parent arrays are pretty low
 \section*{The CHARM Algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Array quality scores were generated with the  Bioconductor {\tt charm - package}, and data quality was checked using the $Enriched$ channel. Four of the six arrays show a large standard deviation in the signal strenth and seem to have a problem in hybridization.
+%Array quality scores were generated with the  Bioconductor {\tt charm - package}, and data quality was checked using the $Enriched$ channel. Four of the six arrays show a large standard deviation in the signal strenth and seem to have a problem in hybridization.
+%
+%To estimate the DNA methylation values, the background signal is removed before computing the log-ratios. A within sample normalization method - {\bf loess} is used, and then a between array normalization - quantile  is used. The control probes which are the non-CpG probes are excluded. This provides us a probe-level estimate of DNA methylation from the 2.1M oligonucliotide microarray.
+%
+%After estimating the DNA methylation values in terms of percentage methylation, we use the regression based DMR-finding approach after correcting for batch effects, which is provided by {\tt charm}. This fails to find DMR’s in the samples. Also, while not taking into account batch effects (surrogate variables), {\tt charm} does not find any DMR's. 
 
-To estimate the DNA methylation values, the background signal is removed before computing the log-ratios. A within sample normalization method - {\bf loess} is used, and then a between array normalization - quantile  is used. The control probes which are the non-CpG probes are excluded. This provides us a probe-level estimate of DNA methylation from the 2.1M oligonucliotide microarray.
+TODO: Needs to be edited (IN PROGRESS)
 
-After estimating the DNA methylation values in terms of percentage methylation, we use the regression based DMR-finding approach after correcting for batch effects, which is provided by {\tt charm}. This fails to find DMR’s in the samples. Also, while not taking into account batch effects (surrogate variables), {\tt charm} does not find any DMR's. 
 
+For each microarray hybridization, we used the raw feature intensities to form log ratios and denoted these with M. The M-values were formed so that larger values represented more evidence of methylation, e.g., with MeDIP, the immunoprecipitate intensity was in the numerator and the total DNA intensity in the denominator. Note that each feature on the array was associated with one M-value. Each array was then normalized so that unmethylated regions, on average, produced M-values of 0. We therefore developed a method that does not require the assumption that M = 0 for most probes. This method used genome sequence information and our knowledge of the fragment selection method to select what we call pseudo-housekeeping probes for which one can in fact assume M = 0. We then apply the Loess normalization procedure developed for expression arrays to the pseudo-housekeeping genes, obtain the correction curve, and use this curve to correct M-values for all probes.To obtain a smoothed M-value at any given genomic location, we average all the M-values that were within a prespecified distance from the location in question. The interval providing the values that are averaged is referred to as the “smoothing window” and its length is referred to as the “window size.”
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -296,6 +302,24 @@ The H460 parent genes have only 2 genes in two pathways(Table 6) , and stored in
 
 
 
+DEVA was also run with a changed cutoff of -5000 to +1500 to produce peak files. A similar pipeline was run as with the new peak files as described above for pathway analysis. The results were different as expected because of a bigger window size. 
+
+\captionof{table}{Number of features in each cell line with extended window}
+\begin{table}[H]
+\centering
+	\begin{tabular}{|l|l|l|}
+	\hline
+		Cell line & Feature Track & Number of features \\ \hline
+		H460 Knock in & transcription start site & 3877 \\ \hline
+		H460 Parent & transcription start site & 2639 \\ \hline
+	\end{tabular}
+\end{table}
+
+The pathway analysis showed, in the H460 Knock-in gene set 189 genes were observed in 18 pathways and in the H460 parent gene set 70 genes were observed in 19 pathways. 
+%Please click on references 5 and 6 for H460 knock-in and H460 parent respectively.
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{R-packages Used}
@@ -335,7 +359,12 @@ List of R-packages used for analysis:
 	\item   Rafael A. Irizarry, Martin Aryee, Hector Corrada Bravo, Kasper D. Hansen and	Harris A. Jaffee (). bumphunter: Bump Hunter. R package version 1.0.0.
 		
 	\item RCircos: an R package for Circos 2D track plots
+	
+%	\item \href{https://app.box.com/s/7xr01qkv3xx41oo5izew}{H460 knock-in genes with corresponding pathways(Click here)} 
+%	
+%	\item \href{https://app.box.com/s/pu0n89gusqlf1umjwwhh}{H460 parent genes with corresponding pathways(Click here)}
 
+	\item Irizarry RA, Ladd-Acosta C, Carvalho B, et al. Comprehensive high-throughput arrays for relative methylation (CHARM) Genome Res. 2008;18(5):780–790. 
 \end{enumerate}
 
  
