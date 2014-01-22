@@ -45,22 +45,31 @@ knock.x = curate.devaPeaks.to.rcircos(knock)
 
 # Curate knocking pathways first
 # Curate to Rcircos
+# status = "H460_knock"
+# path = "Pathways_knock_TSS_change"
+
 
 collect.pathways = function(status,path) {
     files = list.files(path,full.names=T)
     new_df = data.frame()
     for (i in 1:length(files)) {     
+#         i=1
         x = read.csv(files[i])
         pathwayName = gsub(pattern = paste0("_",status,".csv"),replacement="",x=(gsub(".+/","",files[i])))
-        x = x[,c(4:7,1:3,7:22)]
+        # CHANGE HERE TO 7:22 for original TSS peak files
+        x = x[,c(4:7,1:3,7:20)]
         knock_df = data.frame(x,pathway = pathwayName,pathwayGene = paste0(x$name,"-",pathwayName))
         new_df = rbind(new_df,knock_df)
     }
     return(new_df)
 }
+# Function CALL
+knock_df = collect.pathways(status = "H460_knock","Pathways_knock_TSS_change/")
+parent_df = collect.pathways(status= "H460_parent","Pathways_parent_TSS_change/")
 
-knock_df = collect.pathways(status = "H460_knock","Pathways_knock")
-parent_df = collect.pathways(status= "H460_parent","Pathways_parent")
+write.csv(knock_df,file = "collected_pathways_knock_TSS_change.csv")
+write.csv(parent_df,file = "collected_pathways_parent_TSS_change.csv")
+################################################################################
 
 collect.genes = function(row,pathway){pathwayrow$name}
 
