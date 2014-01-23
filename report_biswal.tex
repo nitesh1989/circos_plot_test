@@ -78,12 +78,12 @@ As we can in Table 1, the quality score of the H460 Parent arrays are pretty low
 %
 %To estimate the DNA methylation values, the background signal is removed before computing the log-ratios. A within sample normalization method - {\bf loess} is used, and then a between array normalization - quantile  is used. The control probes which are the non-CpG probes are excluded. This provides us a probe-level estimate of DNA methylation from the 2.1M oligonucliotide microarray.
 %
-%After estimating the DNA methylation values in terms of percentage methylation, we use the regression based DMR-finding approach after correcting for batch effects, which is provided by {\tt charm}. This fails to find DMR’s in the samples. Also, while not taking into account batch effects (surrogate variables), {\tt charm} does not find any DMR's. 
 
-TODO: Needs to be edited (IN PROGRESS)
+CHARM is specifically designed to maximize the number of assayed CpGs .This array design improves the detection strategy because it facilitates a smoothing strategy and assays many more CpGs.  The basic measurement used to quantify methylation is the log-ratio of the intensities observed in the treated and control channels. To detect methylated regions in the CHARM method, the M-values were normalized and processed using genome-weighted smoothing.\href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2336799/}{(5)}\\
 
+The normalization method uses genome sequence information and knowledge of the fragment selection method to select pseudo-housekeeping probes for which one can in fact assume M = 0. Then apply the Loess normalization procedure developed for expression arrays to the pseudo-housekeeping genes, obtain the correction curve, and use this curve to correct M-values for all probes. To obtain a smoothed M-value at any given genomic location, average all the M-values that were within a prespecified distance from the location in question. The interval providing the values that are averaged is referred to as the “smoothing window” and its length is referred to as the “window size.” \href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2336799/}{(5)} \\
 
-For each microarray hybridization, we used the raw feature intensities to form log ratios and denoted these with M. The M-values were formed so that larger values represented more evidence of methylation, e.g., with MeDIP, the immunoprecipitate intensity was in the numerator and the total DNA intensity in the denominator. Note that each feature on the array was associated with one M-value. Each array was then normalized so that unmethylated regions, on average, produced M-values of 0. We therefore developed a method that does not require the assumption that M = 0 for most probes. This method used genome sequence information and our knowledge of the fragment selection method to select what we call pseudo-housekeeping probes for which one can in fact assume M = 0. We then apply the Loess normalization procedure developed for expression arrays to the pseudo-housekeeping genes, obtain the correction curve, and use this curve to correct M-values for all probes.To obtain a smoothed M-value at any given genomic location, we average all the M-values that were within a prespecified distance from the location in question. The interval providing the values that are averaged is referred to as the “smoothing window” and its length is referred to as the “window size.”
+After estimating the DNA methylation values in terms of percentage methylation, we use the regression based DMR-finding approach after correcting for batch effects, which is provided in the {\tt charm-package}. This fails to find DMR’s in the current samples.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -173,10 +173,10 @@ In each cell line, the genes which were intersecting among all the samples were 
 	\end{tabular}
 \end{table}
 
-{\tt NOTE:  Files are attached as “knock-in\_genes\_distFromTSS.csv” and “parent\_genes\_distFromTSS.csv”. The regions are ordered in a decreasing order based on the distance from TSS.}
+{\bf NOTE:}  Files are attached as “knock-in\_genes\_distFromTSS.csv” and “parent\_genes\_distFromTSS.csv”. The regions are ordered in a decreasing order based on the distance from TSS. \\
 
 
-The only features left in the result are transcription start sites, other possible feature is CpG Island (column name  is  FEATURE TRACK). The distribution of the distance from the TSS is also shown for both cell lines. Column name is SHORTEST\_DISTANCE\_FROM\_FEATURE\_TO\_DATA\_POINT.
+The only features left in the result are transcription start sites, other possible feature is CpG Island (column name  is  FEATURE TRACK). The distribution of the distance from the TSS is also shown for both cell lines. Column name is SHORTEST\_DISTANCE\_FROM\_FEATURE\_TO\_DATA\_POINT.\\
 
 \captionof{table}{Summary of Feature distance from data point}
 \begin{table}[H]
@@ -318,6 +318,13 @@ DEVA was also run with a changed cutoff of -5000 to +1500 to produce peak files.
 The pathway analysis showed, in the H460 Knock-in gene set 189 genes were observed in 18 pathways and in the H460 parent gene set 70 genes were observed in 19 pathways. 
 %Please click on references 5 and 6 for H460 knock-in and H460 parent respectively.
 
+The links are provided for both the tables below. 
+\begin{enumerate}
+
+	\item \href{https://app.box.com/s/7xr01qkv3xx41oo5izew}{H460 knock-in genes with corresponding pathways, with changed cutoff of -5000 to +1500.(https://app.box.com/s/7xr01qkv3xx41oo5izew)} 
+%	
+	\item \href{https://app.box.com/s/pu0n89gusqlf1umjwwhh}{H460 parent genes with corresponding pathways,  with changed cutoff of -5000 to +1500.(https://app.box.com/s/pu0n89gusqlf1umjwwhh)}
+\end{enumerate}
 
 
 
@@ -326,7 +333,7 @@ The pathway analysis showed, in the H460 Knock-in gene set 189 genes were observ
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 List of R-packages used for analysis:
-\begin{enumerate}
+\begin{enumerate}[itemsep=-0.2mm]
 
 \item Charm
 
@@ -337,6 +344,8 @@ List of R-packages used for analysis:
 \item plyr
 
 \item RCircos
+
+%\item 
 
 \end{enumerate}
 
@@ -360,11 +369,15 @@ List of R-packages used for analysis:
 		
 	\item RCircos: an R package for Circos 2D track plots
 	
-%	\item \href{https://app.box.com/s/7xr01qkv3xx41oo5izew}{H460 knock-in genes with corresponding pathways(Click here)} 
-%	
-%	\item \href{https://app.box.com/s/pu0n89gusqlf1umjwwhh}{H460 parent genes with corresponding pathways(Click here)}
 
-	\item Irizarry RA, Ladd-Acosta C, Carvalho B, et al. Comprehensive high-throughput arrays for relative methylation (CHARM) Genome Res. 2008;18(5):780–790. 
+
+	\item \href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2336799/}{Irizarry RA, Ladd-Acosta C, Carvalho B, et al. Comprehensive high-throughput arrays for relative methylation (CHARM) Genome Res. 2008;18(5):780–790.} 
+	
+	\item Martin J. Aryee, Zhijin Wu, Christine Ladd-Acosta, Brian Herb, Andrew P.
+Feinberg, Srinivasan Yegnasubramanian, and Rafael A. Irizarry. Accurate
+genome-scale percentage dna methylation estimates from microarray data.
+Biostatistics, 12(2):197-210, 2011.
+
 \end{enumerate}
 
  
