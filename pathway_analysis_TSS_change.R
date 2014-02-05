@@ -78,12 +78,18 @@ library(ggplot2)
 
 
 png(filename="distribution_knocking_annotated_TSS_change.png")
-qplot(annot_knock$SHORTEST_DISTANCE_FROM_FEATURE_TO_DATA_POINT,main = "Distance from TSS, H460_knock",xlab = "Distance from TSS in bp")
+x = qplot(annot_knock$SHORTEST_DISTANCE_FROM_FEATURE_TO_DATA_POINT,ylab = "Frequency of DMRs",xlab = "Distance from TSS in bp")
+main = "DMR frequency in Greater Promoter Region,by distance to TSS"
+subtitle = "H460 Knock in"
+x + ggtitle(bquote(atop(.(main), atop(bold(.(subtitle)), "")))) 
 dev.off()
 
 
 png(filename="distribution_parent_annotated_TSS_change.png")
-qplot(annot_parent$SHORTEST_DISTANCE_FROM_FEATURE_TO_DATA_POINT,main ="Distance from TSS, H460_parent",xlab = "Distance from TSS in bp")
+x = qplot(annot_parent$SHORTEST_DISTANCE_FROM_FEATURE_TO_DATA_POINT,ylab = "Frequency of DMRs",xlab = "Distance from TSS in bp")
+main = "DMR frequency in Greater Promoter Region,by distance to TSS"
+subtitle = "H460 Parent"
+x + ggtitle(bquote(atop(.(main), atop(bold(.(subtitle)), "")))) 
 dev.off()
 
 
