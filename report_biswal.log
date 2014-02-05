@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.16)  4 FEB 2014 13:23
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.16)  5 FEB 2014 16:32
 entering extended mode
 **report_biswal.tex
 
@@ -296,6 +296,25 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 \c@ContinuedFloat=\count109
 Package caption Info: float package is loaded.
 )
+(C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\tools\longtab
+le.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count110
+\LTcapwidth=\dimen132
+\LT@head=\box31
+\LT@firsthead=\box32
+\LT@foot=\box33
+\LT@lastfoot=\box34
+\LT@cols=\count111
+\LT@rows=\count112
+\c@LT@tables=\count113
+\c@LT@chunks=\count114
+\LT@p@ftn=\toks35
+)
 (C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\hyperref\hype
 rref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
@@ -353,15 +372,15 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 tions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
-\@linkdim=\dimen132
-\Hy@linkcounter=\count110
-\Hy@pagecounter=\count111
+\@linkdim=\dimen133
+\Hy@linkcounter=\count115
+\Hy@pagecounter=\count116
 
 (C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\hyperref\pd1e
 nc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count112
+\Hy@SavedSpaceFactor=\count117
 
 (C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\00miktex\hype
 rref.cfg
@@ -374,7 +393,7 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count113
+\c@Hy@tempcnt=\count118
 
 (C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\ltxmisc\url.s
 ty
@@ -382,10 +401,10 @@ ty
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
-\XeTeXLinkMargin=\dimen133
-\Fld@menulength=\count114
-\Field@Width=\dimen134
-\Fld@charsize=\dimen135
+\XeTeXLinkMargin=\dimen134
+\Fld@menulength=\count119
+\Field@Width=\dimen135
+\Fld@charsize=\dimen136
 Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
@@ -395,9 +414,9 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count115
-\c@Item=\count116
-\c@Hfootnote=\count117
+\Hy@abspage=\count120
+\c@Item=\count121
+\c@Hfootnote=\count122
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
@@ -406,8 +425,8 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\hyperref\hpdf
 tex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count118
-\c@bookmark@seq@number=\count119
+\Fld@listcount=\count123
+\c@bookmark@seq@number=\count124
 
 (C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\oberdiek\reru
 nfilecheck.sty
@@ -415,27 +434,27 @@ Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip53
+\Hy@SectionHShift=\skip57
 )
 (C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\caption\subca
 ption.sty
 Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
-\c@subfigure=\count120
-\c@subtable=\count121
+\c@subfigure=\count125
+\c@subtable=\count126
 )
-\@float@every@table=\toks35
+\@float@every@table=\toks36
 
 (C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\fancyhdr\fanc
 yhdr.sty
-\fancy@headwidth=\skip54
-\f@ncyO@elh=\skip55
-\f@ncyO@erh=\skip56
-\f@ncyO@olh=\skip57
-\f@ncyO@orh=\skip58
-\f@ncyO@elf=\skip59
-\f@ncyO@erf=\skip60
-\f@ncyO@olf=\skip61
-\f@ncyO@orf=\skip62
+\fancy@headwidth=\skip58
+\f@ncyO@elh=\skip59
+\f@ncyO@erh=\skip60
+\f@ncyO@olh=\skip61
+\f@ncyO@orh=\skip62
+\f@ncyO@elf=\skip63
+\f@ncyO@erf=\skip64
+\f@ncyO@olf=\skip65
+\f@ncyO@orf=\skip66
 )
 (C:\Users\nturaga1\Documents\TestRun\ShyamBiswal\circos_plot_test\report_biswal
 .aux)
@@ -457,17 +476,17 @@ LaTeX Font Info:    ... okay on input line 27.
 (C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\context\base\supp-p
 df.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count122
-\scratchdimen=\dimen136
-\scratchbox=\box31
-\nofMPsegments=\count123
-\nofMParguments=\count124
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count125
-\MPscratchDim=\dimen137
-\MPnumerator=\count126
-\makeMPintoPDFobject=\count127
-\everyMPtoPDFconversion=\toks37
+\scratchcounter=\count127
+\scratchdimen=\dimen137
+\scratchbox=\box35
+\nofMPsegments=\count128
+\nofMParguments=\count129
+\everyMPshowfont=\toks37
+\MPscratchCnt=\count130
+\MPscratchDim=\dimen138
+\MPnumerator=\count131
+\makeMPintoPDFobject=\count132
+\everyMPtoPDFconversion=\toks38
 )
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -505,8 +524,14 @@ df.mkii
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+
+(C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\caption\ltcap
+tion.sty
+Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
+)
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box32
+\AtBeginShipoutBox=\box36
 Package hyperref Info: Link coloring OFF on input line 27.
 
 (C:\Users\nturaga1\Downloads\MiKTeX\setup\MiKTekInstall\tex\latex\hyperref\name
@@ -517,7 +542,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ttitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count128
+\c@section@level=\count133
 )
 LaTeX Info: Redefining \ref on input line 27.
 LaTeX Info: Redefining \pageref on input line 27.
@@ -563,11 +588,6 @@ File: qcImage2.png Graphic file (type png)
  <use qcImage2.png>
 Package pdftex.def Info: qcImage2.png used on input line 68.
 (pdftex.def)             Requested size: 210.28511pt x 89.83539pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
-
- []
-
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ú in font cmr10!
@@ -585,151 +605,107 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ô in font cmr10!
 [2 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_test/qcImage1.p
 ng> <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_test/qcImage2.
 png>]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 165.
-See the caption package documentation for explanation.
-
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
-
- []
-
-
-Underfull \hbox (badness 3148) in paragraph at lines 179--180
-[]\OT1/cmr/m/n/10.95 The only fea-tures left in the re-sult are tran-scrip-tion
- start sites, other pos-si-ble fea-
- []
-
-
-Underfull \hbox (badness 4108) in paragraph at lines 179--180
-\OT1/cmr/m/n/10.95 ture is CpG Is-land (col-umn name is FEA-TURE TRACK). The di
-s-tri-bu-tion of the
- []
-
-
-Underfull \hbox (badness 1902) in paragraph at lines 179--180
-\OT1/cmr/m/n/10.95 dis-tance from the TSS is also shown for both cell lines. Co
-l-umn name is SHORT-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--180
-
- []
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 181.
+(caption)                particular \caption on input line 154.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 192.
+(caption)                particular \caption on input line 168.
 See the caption package documentation for explanation.
 
-<distribution_knocking.png, id=30, 686.565pt x 680.5425pt>
-File: distribution_knocking.png Graphic file (type png)
 
-<use distribution_knocking.png>
-Package pdftex.def Info: distribution_knocking.png used on input line 197.
-(pdftex.def)             Requested size: 205.97108pt x 204.16432pt.
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 179.
+See the caption package documentation for explanation.
 
-Overfull \hbox (18.07195pt too wide) in paragraph at lines 197--198
+<distribution_knocking_annotated_TSS_change.png, id=27, 481.8pt x 481.8pt>
+File: distribution_knocking_annotated_TSS_change.png Graphic file (type png)
+
+<use distribution_knocking_annotated_TSS_change.png>
+Package pdftex.def Info: distribution_knocking_annotated_TSS_change.png used on
+ input line 184.
+(pdftex.def)             Requested size: 216.80798pt x 216.80798pt.
+
+Overfull \hbox (28.90884pt too wide) in paragraph at lines 184--185
 [][] 
  []
 
-<distribution_parent.png, id=31, 686.565pt x 680.5425pt>
-File: distribution_parent.png Graphic file (type png)
+<distribution_parent_annotated_TSS_change.png, id=28, 481.8pt x 481.8pt>
+File: distribution_parent_annotated_TSS_change.png Graphic file (type png)
 
-<use distribution_parent.png>
-Package pdftex.def Info: distribution_parent.png used on input line 204.
-(pdftex.def)             Requested size: 205.97108pt x 204.16432pt.
+<use distribution_parent_annotated_TSS_change.png>
+Package pdftex.def Info: distribution_parent_annotated_TSS_change.png used on i
+nput line 191.
+(pdftex.def)             Requested size: 216.80798pt x 216.80798pt.
 
-Overfull \hbox (18.07195pt too wide) in paragraph at lines 204--205
+Overfull \hbox (28.90884pt too wide) in paragraph at lines 191--192
 [][] 
  []
 
 [3 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_test/distributi
-on_knocking.png> <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_t
-est/distribution_parent.png>] [4]
+on_knocking_annotated_TSS_change.png> <C:/Users/nturaga1/Documents/TestRun/Shya
+mBiswal/circos_plot_test/distribution_parent_annotated_TSS_change.png>]
+[4]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 251.
+(caption)                particular \caption on input line 237.
 See the caption package documentation for explanation.
 
+[5]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 293.
+(caption)                particular \caption on input line 311.
 See the caption package documentation for explanation.
 
+[6]
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ì in font cmr10!
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 307.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 1024) in paragraph at lines 324--326
+Underfull \hbox (badness 1024) in paragraph at lines 451--453
 [][]\OT1/cmr/m/n/10.95 H460 knock-in genes with cor-re-spond-ing path-ways, wit
 h changed cut-off of -5000 to
  []
 
-[5]
-Underfull \hbox (badness 1874) in paragraph at lines 326--327
+
+Underfull \hbox (badness 1874) in paragraph at lines 453--454
 [][]\OT1/cmr/m/n/10.95 H460 par-ent genes with cor-re-spond-ing path-ways, with
  changed cut-off of -5000 to
  []
 
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ì in font cmr10!
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 387.
-[6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 387.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 459.
+[7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 459.
 
 (C:\Users\nturaga1\Documents\TestRun\ShyamBiswal\circos_plot_test\report_biswal
 .aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 387.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 387.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 459.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 459.
 Package rerunfilecheck Info: File `report_biswal.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 387.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 459.
  ) 
 Here is how much of TeX's memory you used:
- 8998 strings out of 493921
- 140215 string characters out of 3136445
- 243346 words of memory out of 3000000
- 12125 multiletter control sequences out of 15000+200000
- 11521 words of font info for 44 fonts, out of 3000000 for 9000
+ 9105 strings out of 493921
+ 142032 string characters out of 3136445
+ 261105 words of memory out of 3000000
+ 12228 multiletter control sequences out of 15000+200000
+ 11353 words of font info for 43 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 41i,12n,51p,823b,442s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,12n,51p,892b,446s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb><C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fo
 nts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/nturaga1/Downloads/MiKTeX/set
 up/MiKTekInstall/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/nturaga1/Do
 wnloads/MiKTeX/setup/MiKTekInstall/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
 /Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fonts/type1/public/amsfont
-s/cm/cmr17.pfb><C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fonts/ty
-pe1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report_biswal.pdf (6 pages, 236564 bytes).
+s/cm/cmr17.pfb>
+Output written on report_biswal.pdf (7 pages, 230105 bytes).
 PDF statistics:
  130 PDF objects out of 1000 (max. 8388607)
  54 named destinations out of 1000 (max. 500000)

@@ -7,8 +7,8 @@
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{longtable}
 \usepackage{hyperref}
-
 \captionsetup[table]{justification=raggedright,singlelinecheck=off,labelfont=bf}
 \usepackage{subcaption}
 \restylefloat{table}
@@ -79,19 +79,19 @@ As we can in Table 1, the quality score of the H460 Parent arrays are pretty low
 %To estimate the DNA methylation values, the background signal is removed before computing the log-ratios. A within sample normalization method - {\bf loess} is used, and then a between array normalization - quantile  is used. The control probes which are the non-CpG probes are excluded. This provides us a probe-level estimate of DNA methylation from the 2.1M oligonucliotide microarray.
 %
 
-CHARM is specifically designed to maximize the number of assayed CpGs .This improves the detection strategy because it facilitates a smoothing strategy and assays many more CpGs.  The basic measurement used to quantify methylation is the log-ratio of the intensities observed in the treated and control channels. To detect methylated regions in the CHARM method, the M-values were normalized and processed using genome-weighted smoothing.\href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2336799/}{(5)}\\
+%CHARM is specifically designed to maximize the number of assayed CpGs. This improves the detection strategy because it facilitates a smoothing strategy and assays many more CpGs.
 
-The normalization method uses genome sequence information and knowledge of the fragment selection method to select pseudo-housekeeping probes for which one can in fact assume M = 0. Then apply the Loess normalization procedure developed for expression arrays to the pseudo-housekeeping genes, obtain the correction curve, and use this curve to correct M-values for all probes. To obtain a smoothed M-value at any given genomic location, average all the M-values that were within a prespecified distance from the location in question. The interval providing the values that are averaged is referred to as the “smoothing window” and its length is referred to as the “window size.” \href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2336799/}{(5)} \\
+The basic measurement used to quantify methylation is the log-ratio of the intensities observed in the treated and control channels. To detect methylated regions in CHARM, the M-values were normalized and processed using genome-weighted smoothing. The normalization method uses genome sequence information and knowledge of select pseudo-housekeeping probes for which one can assume M = 0. Loess is applied to the pseudo-housekeeping genes, to correct M-values for all probes. To obtain a smoothed M-value at any given genomic location, average all the M-values that were within a prespecified distance from the location in question. The interval providing the values that are averaged is referred to as the “smoothing window” and its length is referred to as the “window size.” \href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2336799/}{(5)} \\
 
-After estimating the DNA methylation values in terms of percentage methylation, we use the regression based DMR-finding approach after correcting for batch effects, which is provided in the {\tt charm-package}. This fails to find DMR’s in the current samples.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section*{The Bumphunter Algorithm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+After estimating the DNA methylation in terms of percentage methylation, we use the regression based DMR-finding approach after correcting for batch effects. No DMRs were found using this method.
 
 
-Bumphunter used to estimate regions for which the genomic profile deviates from a baseline value(cut off). It is implemented to detect differntially methylated genomic regions between two populations. It is also a regression based approach.It reports the result, with a table of candidate differentially methylated regions and the corresponding annotation for wach region.
+%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\section*{The Bumphunter Algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%Bumphunter used to estimate regions for which the genomic profile deviates from a baseline value(cut off). It is implemented to detect differntially methylated genomic regions between two populations. It is also a regression based approach.It reports the result, with a table of candidate differentially methylated regions and the corresponding annotation for wach region.
 
 %
 %{\bf Analysis using Bumphunter}
@@ -147,20 +147,9 @@ Bumphunter used to estimate regions for which the genomic profile deviates from 
 \section*{The Nimblegen Algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The standard Nimblegen algorithms were used to compute the normalized data and identify peaks of enrichment, coinciding with methylated regions. Peaks near known transcription start sites (TSS) were identified, with different cutoffs between maximal distance between a peak and TSS.
+Peaks of enrichment which coincide with methylated regions were found. Peaks near known transcription start sites (TSS) were identified and mapped to overlapping features upto 5000 bp upstream and 1500 downstream in relation to the TSS. In each cell line, the genes which were intersecting among all the samples were identified. To make the two sets independent, all the genes which were identified as common between both cell lines were removed, hence each gene set unique and exclusive for a specific cell line. Both sets of unique and exclusive genes, were ordered by distance from the Transcription start site. 3877 genes were identified in H460 knock-in cell line and 2639 in H460 parent. (Table 2)
 
-%\begin{itemize}
-%	\item  -500 to +500, the default cutoff
-%	\item  -5000 to +1500, a custom cutoff
-%\end{itemize}
-
-%{\bf Analysis using Peaks files from DEVA}
-
-In each cell line, the genes which were intersecting among all the samples were identified. All the genes which were identified jointly in both cell lines were removed, making each gene set unique and exclusive for a specific cell line. Both sets of unique and exclusive genes, were ordered by distance from the Transcription start site. 944 genes were identified in H460 knock-in cell line and 349 in H460 parent. (Table 2)
-
-%Sequential intersections, based on the number of peaks identified in each sample, was done in decreasing order for each experimental status. This step results in all the genes within each sample which are intersecting.
-
-%We find the common genes between “H460\_knock-in” and “H460\_parent", and remove these genes from the intersected lists. We then order them by distance from the transcription start site(TSS).
+\newpage
 
 \captionof{table}{Number of features in each cell line}
 \begin{table}[H]
@@ -168,15 +157,13 @@ In each cell line, the genes which were intersecting among all the samples were 
 	\begin{tabular}{|l|l|l|}
 	\hline
 		Cell line & Feature Track & Number of features \\ \hline
-		H460 Knock in & transcription start site & 944 \\ \hline
-		H460 Parent & transcription start site & 349 \\ \hline
+		H460 Knock in & transcription start site & 3877 \\ \hline
+		H460 Parent & transcription start site & 2639 \\ \hline
 	\end{tabular}
 \end{table}
 
-{\bf NOTE:}  Files are attached as “knock-in\_genes\_distFromTSS.csv” and “parent\_genes\_distFromTSS.csv”. The regions are ordered in a decreasing order based on the distance from TSS. \\
 
-
-The only features left in the result are transcription start sites, other possible feature is CpG Island (column name  is  FEATURE TRACK). The distribution of the distance from the TSS is also shown for both cell lines. Column name is SHORTEST\_DISTANCE\_FROM\_FEATURE\_TO\_DATA\_POINT.\\
+The distribution of the distance from the TSS is also shown for both cell lines. This region encompasses the greater promoter region.
 
 \captionof{table}{Summary of Feature distance from data point}
 \begin{table}[H]
@@ -184,8 +171,8 @@ The only features left in the result are transcription start sites, other possib
     \begin{tabular}{|l|l|l|l|l|l|l|}
     \hline
      Cell line & Min. & 1st Qu. & Median & Mean & 3rd Qu. &   Max.  \\ \hline
-   H460 Knock in  & -4998.0 & -3363.0 & -1916.0 & -1956.0 & -569.8 & 995.0  \\ \hline
-   H460 Parent & -4975 &  -3669 &  -2474 &  -2223 &   -718  &   997  \\ \hline
+   H460 Knock in  &  -5000  & -3163  & -1503 &  -1599  & 0  &  1500   \\ \hline
+   H460 Parent & -4991  & -3500 &  -1900 &  -1756   &    0  &  1499   \\ \hline
     \end{tabular}
 \end{table}
 
@@ -194,14 +181,14 @@ The only features left in the result are transcription start sites, other possib
 \centering
 \begin{subfigure}{.4\textwidth}
   %\centering
-  \includegraphics[scale=0.3]{distribution_knocking.png}
+  \includegraphics[scale=0.45]{distribution_knocking_annotated_TSS_change.png}
   \caption{H460 knock-in distance from TSS}
   \label{fig:sub1}
 \end{subfigure}
 \quad
 \begin{subfigure}{.4\textwidth}
   %\centering
-  \includegraphics[scale=0.3]{distribution_parent.png}
+  \includegraphics[scale=0.45]{distribution_parent_annotated_TSS_change.png}
   \caption{H460 parent distance from TSS}
   \label{fig:sub2}
 \end{subfigure}
@@ -242,90 +229,160 @@ Both the list of H460 Knock-in genes and H460 parent genes were compared with a 
 \item WNT Signaling Pathway                              
 \end{enumerate}
 
-Very few pathway genes matched with the H460 knock-in genes and the H460 parent genes. 
-
-The H460 knock-in genes have only 29 genes in common with the pathways(listed in Table 5). The following result from shows you the pathways and the genes along with gene description. The result, for the names of the genes is stored in "pathway\_genes\_knock.csv". 
+Genes which belong to these pathways matched with the H460 knock-in genes and the H460 parent genes are shown graphically to represent the frequency. The H460 knock-in genes have 189 genes in common with the pathways (partially listed in Table 5)and H460 parent genes have  71 genes in pathways(Table 6). 
+.The following tables shows you the pathways and the genes along with gene description. Supplemental tables have links to the full results.
 
 \newpage
 
 \captionof{table}{H460 Knock-in gene with corresponding pathways}
 
 \begin{table}[H]
-	\resizebox{\columnwidth}{!}{%
-    \begin{tabular}{|l|l|l|}
-    \hline
-    {\bf Gene name}   & {\bf Description}                                                                           & {\bf Pathway}                                  \\ \hline
-    BRCA1  & breast cancer 1, early onset                                                          & Cell\_Cycle                              \\
-    HOXB2  & homeobox B2                                                                           & Complete\_Homeobox\_(HOX)\_Genes         \\
-    HOXB3  & homeobox B3                                                                           & Complete\_Homeobox\_(HOX)\_Genes         \\
-    HOXB4  & homeobox B4                                                                           & Complete\_Homeobox\_(HOX)\_Genes         \\
-    HOXB6  & homeobox B6                                                                           & Complete\_Homeobox\_(HOX)\_Genes         \\
-    HOXB7  & homeobox B7                                                                           & Complete\_Homeobox\_(HOX)\_Genes         \\
-    HOXB8  & homeobox B8                                                                           & Complete\_Homeobox\_(HOX)\_Genes         \\
-    BRCA1  & breast cancer 1, early onset                                                          & Complete\_Human\_Tumor\_Suppressor\_Genes \\
-    DIRAS3 & DIRAS family, GTP-binding RAS-like 3                                                  & Complete\_Human\_Tumor\_Suppressor\_Genes \\
-    XRCC1  & X-ray repair complementing defective repair in Chinese hamster cells 1                & Complete\_Human\_Tumor\_Suppressor\_Genes \\
-    GATA6  & GATA binding protein 6                                                                & Complete\_Stem\_Cell\_Transcription\_Factors \\
-    HOXB3  & homeobox B3                                                                           & Complete\_Stem\_Cell\_Transcription\_Factors \\
-    HOXB8  & homeobox B8                                                                           & Complete\_Stem\_Cell\_Transcription\_Factors \\
-    SOX9   & SRY (sex determining region Y)-box 9                                                  & Complete\_Stem\_Cell\_Transcription\_Factors \\
-    STAT3  & signal transducer and activator of transcription 3 (acute-phase response factor)      & Complete\_Stem\_Cell\_Transcription\_Factors \\
-    ATF4   & activating transcription factor 4 (tax-responsive enhancer element B67)               & Complete\_Stress\_\&\_Toxicity           \\
-    BRCA1  & breast cancer 1, early onset                                                          & Complete\_Stress\_\&\_Toxicity           \\
-    ERCC1  & excision repair cross-complementing rodent repair deficiency, complementation group 1 & Complete\_Stress\_\&\_Toxicity           \\
-    GPX7   & glutathione peroxidase 7                                                              & Complete\_Stress\_\&\_Toxicity           \\
-    SMC1A  & structural maintenance ofchromosomes 1A                                               & Complete\_Stress\_\&\_Toxicity           \\
-    XRCC1  & X-ray repair complementing defective repair in Chinese hamster cells 1                & Complete\_Stress\_\&\_Toxicity           \\
-    ELANE  & elastase, neutrophil expressed                                                        & Cytokine\_Production                     \\
-    BRCA1  & breast cancer 1, early onset                                                          & DNA\_Repair                              \\
-    XRCC1  & X-ray repair complementing defective repair in Chinese hamster cells 1                & DNA\_Repair                              \\
-    PSENEN & presenilin enhancer 2 homolog (C. elegans)                                            & Human\_Notch\_Signaling\_Pathway         \\
-    BRCA1  & breast cancer 1, early onset                                                          & Human\_Tumor\_Suppressor\_Genes          \\
-    CBX2   & chromobox homolog 2 (Pc class homolog, Drosophila)                                    & Polycomb\_\&\_Trithorax\_Complexes       \\
-    STAT3  & signal transducer and activator of transcription 3 (acute-phase response factor)      & Stem\_Cell\_Transcription\_Factors       \\
-    IRAK1  & interleukin-1 receptor-associated kinase 1                                            & Toll-Like\_Receptor\_Signaling\_Pathway  \\ \hline
-    \end{tabular}}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{|l|l|l|}
+\hline
+{\bf name}    & {\bf description}  & {\bf pathway}                                                  \\
+\hline
+BRCA1   & breast cancer 1, early onset                                                                                   & Cell\_Cycle                                              \\
+CCNF    & cyclin F                                                                                                       & Cell\_Cycle                                              \\
+RAD9A   & RAD9 homolog A (S. pombe)                                                                                      & Cell\_Cycle                                              \\
+TP53    & tumor protein p53                                                                                              & Cell\_Cycle                                              \\
+ALX1    & ALX homeobox 1                                                                                                 & Complete\_Homeobox\_(HOX)\_Genes                         \\
+ALX4    & ALX homeobox 4                                                                                                 & Complete\_Homeobox\_(HOX)\_Genes                         \\
+CDX2    & caudal type homeobox 2                                                                                         & Complete\_Homeobox\_(HOX)\_Genes                         \\
+DLX1    & distal-less homeobox 1                                                                                         & Complete\_Homeobox\_(HOX)\_Genes                         \\
+DLX5    & distal-less homeobox 5                                                                                         & Complete\_Homeobox\_(HOX)\_Genes                         \\
+DLX6    & distal-less homeobox 6                                                                                         & Complete\_Homeobox\_(HOX)\_Genes                         \\
+EMX1    & empty spiracles homeobox 1                                                                                     & Complete\_Homeobox\_(HOX)\_Genes                         \\
+EN1     & engrailed homeobox 1                                                                                           & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXA11  & homeobox A11                                                                                                   & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXA13  & homeobox A13                                                                                                   & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXA2   & homeobox A2                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXA4   & homeobox A4                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXA5   & homeobox A5                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXA7   & homeobox A7                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXA9   & homeobox A9                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXB2   & homeobox B2                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXB3   & homeobox B3                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXB4   & homeobox B4                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXB6   & homeobox B6                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXB7   & homeobox B7                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXB8   & homeobox B8                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXC10  & homeobox C10                                                                                                   & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXC11  & homeobox C11                                                                                                   & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXC12  & homeobox C12                                                                                                   & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXC13  & homeobox C13                                                                                                   & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXD1   & homeobox D1                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXD10  & homeobox D10                                                                                                   & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXD11  & homeobox D11                                                                                                   & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXD12  & homeobox D12                                                                                                   & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXD3   & homeobox D3                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+HOXD9   & homeobox D9                                                                                                    & Complete\_Homeobox\_(HOX)\_Genes                         \\
+ISL1    & ISL LIM homeobox 1                                                                                             & Complete\_Homeobox\_(HOX)\_Genes                         \\
+LBX1    & ladybird homeobox 1                                                                                            & Complete\_Homeobox\_(HOX)\_Genes                         \\
+LBX2    & ladybird homeobox 2                                                                                            & Complete\_Homeobox\_(HOX)\_Genes                         \\
+MIXL1   & Mix1 homeobox-like 1 (Xenopus laevis)                                                                          & Complete\_Homeobox\_(HOX)\_Genes                         \\
+MSX2    & msh homeobox 2                                                                                                 & Complete\_Homeobox\_(HOX)\_Genes                         \\
+PHOX2A  & paired-like homeobox 2a                                                                                        & Complete\_Homeobox\_(HOX)\_Genes                         \\
+PHOX2B  & paired-like homeobox 2b                                                                                        & Complete\_Homeobox\_(HOX)\_Genes                         \\
+PITX3   & paired-like homeodomain 3                                                                                      & Complete\_Homeobox\_(HOX)\_Genes                         \\
+BCL6    & B-cell CLL/lymphoma 6                                                                                          & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+CD276   & CD276 molecule                                                                                                 & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+CXCL5   & chemokine (C-X-C motif) ligand 5                                                                               & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+IL10RB  & interleukin 10 receptor, beta                                                                                  & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+IL17RA  & interleukin 17 receptor A                                                                                      & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+IL4R    & interleukin 4 receptor                                                                                         & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+IL6ST   & interleukin 6 signal transducer (gp130, oncostatin M receptor)                                                 & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+INHBA   & inhibin, beta A                                                                                                & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+IRF1    & interferon regulatory factor 1                                                                                 & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+LTB4R   & leukotriene B4 receptor                                                                                        & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+NOD1    & nucleotide-binding oligomerization domain containing 1                                                         & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+PAX1    & paired box 1                                                                                                   & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+RELA    & v-rel reticuloendotheliosis viral oncogene homolog A (avian)                                                   & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+S1PR3   & sphingosine-1-phosphate receptor 3                                                                             & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+SOCS1   & suppressor of cytokine signaling 1                                                                             & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+TH1L    & TH1-like (Drosophila)                                                                                          & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+TIRAP   & toll-interleukin 1 receptor (TIR) domain containing adaptor protein                                            & Complete\_Human\_Inflammatory\_Response\_\&\_Autoimmunity \\
+\hline
+\end{tabular}}
 \end{table}
 
-
-The H460 parent genes have only 2 genes in two pathways(Table 6) , and stored in "pathways\_genes\_parent.csv".
+\newpage
 
 \captionof{table}{H460 parent gene with corresponding pathways }
 \begin{table}[H]
-    \begin{tabular}{|l|l|l|}
-    \hline
-    {\bf Gene name} & {\bf Description}       & {\bf Pathway}                                  \\ \hline
-    AR   & androgen receptor & Complete\_Stem\_Cell\_Transcription\_Factors \\ 
-    AR   & androgen receptor & Stem\_Cell\_Transcription\_Factors       \\ \hline
-    \end{tabular}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{name} & \textbf{description}                                                                                      & \textbf{pathway}                                    \\ \hline 
+BRCA2         & breast cancer 2  early onset                                                                              & Cell\_Cycle                                                \\ 
+CCNE1         & cyclin E1                                                                                                 & Cell\_Cycle                                                \\ 
+MRE11A        & MRE11 meiotic recombination 11 homolog A (S. cerevisiae)                                                  & Cell\_Cycle                                                \\ 
+HOPX          & HOP homeobox                                                                                              & Complete\_Homeobox\_(HOX)\_Genes                           \\ 
+MKX           & mohawk homeobox                                                                                           & Complete\_Homeobox\_(HOX)\_Genes                           \\ 
+SIX6          & SIX homeobox 6                                                                                            & Complete\_Homeobox\_(HOX)\_Genes                           \\
+ATF2          & activating transcription factor 2                                                                         & Complete\_Human\_Inflammatory\_Response\_and\_Autoimmunity \\ 
+CD274         & CD274 molecule                                                                                            & Complete\_Human\_Inflammatory\_Response\_and\_Autoimmunity \\ 
+CXCL1         & chemokine (C-X-C motif) ligand 1 (melanoma growth stimulating activity  alpha)                            & Complete\_Human\_Inflammatory\_Response\_and\_Autoimmunity \\ 
+IL12A         & interleukin 12A (natural killer cell stimulatory factor 1  cytotoxic lymphocyte maturation factor 1  p35) & Complete\_Human\_Inflammatory\_Response\_and\_Autoimmunity \\ 
+IL12B         & interleukin 12B (natural killer cell stimulatory factor 2  cytotoxic lymphocyte maturation factor 2  p40) & Complete\_Human\_Inflammatory\_Response\_and\_Autoimmunity \\ 
+IL15          & interleukin 15                                                                                            & Complete\_Human\_Inflammatory\_Response\_and\_Autoimmunity \\ 
+NFKB1         & nuclear factor of kappa light polypeptide gene enhancer in B-cells 1                                      & Complete\_Human\_Inflammatory\_Response\_and\_Autoimmunity \\ 
+RIPK2         & receptor-interacting serine-threonine kinase 2                                                            & Complete\_Human\_Inflammatory\_Response\_and\_Autoimmunity \\ 
+TLR2          & toll-like receptor 2                                                                                      & Complete\_Human\_Inflammatory\_Response\_and\_Autoimmunity \\ 
+BRCA2         & breast cancer 2  early onset                                                                              & Complete\_Human\_Tumor\_Suppressor\_Genes                  \\ 
+CDKN2A        & cyclin-dependent kinase inhibitor 2A (melanoma  p16  inhibits CDK4)                                       & Complete\_Human\_Tumor\_Suppressor\_Genes                  \\ 
+ING1          & inhibitor of growth family  member 1                                                                      & Complete\_Human\_Tumor\_Suppressor\_Genes                  \\ 
+MDM2          & Mdm2 p53 binding protein homolog (mouse)                                                                  & Complete\_Human\_Tumor\_Suppressor\_Genes                  \\ 
+NFKB1         & nuclear factor of kappa light polypeptide gene enhancer in B-cells 1                                      & Complete\_Human\_Tumor\_Suppressor\_Genes                  \\ 
+AR            & androgen receptor                                                                                         & Complete\_Stem\_Cell\_Transcription\_Factors               \\ 
+DACH1         & dachshund homolog 1 (Drosophila)                                                                          & Complete\_Stem\_Cell\_Transcription\_Factors               \\ 
+NFYA          & nuclear transcription factor Y  alpha                                                                     & Complete\_Stem\_Cell\_Transcription\_Factors               \\ 
+PCNA          & proliferating cell nuclear antigen                                                                        & Complete\_Stem\_Cell\_Transcription\_Factors               \\ 
+RUNX2         & runt-related transcription factor 2                                                                       & Complete\_Stem\_Cell\_Transcription\_Factors               \\ 
+SMAD2         & SMAD family member 2                                                                                      & Complete\_Stem\_Cell\_Transcription\_Factors               \\ 
+SOX2          & SRY (sex determining region Y)-box 2                                                                      & Complete\_Stem\_Cell\_Transcription\_Factors               \\ 
+WRN           & Werner syndrome  RecQ helicase-like                                                                       & Complete\_Stem\_Cell\_Transcription\_Factors               \\ 
+ZFPM2         & zinc finger protein  multitype 2                                                                          & Complete\_Stem\_Cell\_Transcription\_Factors               \\ 
+DNAJB9        & DnaJ (Hsp40) homolog  subfamily B  member 9                                                               & Complete\_Stress\_and\_Toxicity                            \\ 
+MDM2          & Mdm2 p53 binding protein homolog (mouse)                                                                  & Complete\_Stress\_and\_Toxicity                            \\ 
+MRE11A        & MRE11 meiotic recombination 11 homolog A (S. cerevisiae)                                                  & Complete\_Stress\_and\_Toxicity                            \\ 
+NFKB1         & nuclear factor of kappa light polypeptide gene enhancer in B-cells 1                                      & Complete\_Stress\_and\_Toxicity                            \\ 
+PCNA          & proliferating cell nuclear antigen                                                                        & Complete\_Stress\_and\_Toxicity                            \\ 
+RAD17         & RAD17 homolog (S. pombe)                                                                                  & Complete\_Stress\_and\_Toxicity                            \\ 
+IL12A         & interleukin 12A (natural killer cell stimulatory factor 1  cytotoxic lymphocyte maturation factor 1  p35) & Cytokine\_Production                                       \\ 
+TLR2          & toll-like receptor 2                                                                                      & Cytokine\_Production                                       \\ 
+BRCA2         & breast cancer 2  early onset                                                                              & DNA\_Repair                                                \\ 
+MLH3          & mutL homolog 3 (E. coli)                                                                                  & DNA\_Repair                                                \\ 
+MRE11A        & MRE11 meiotic recombination 11 homolog A (S. cerevisiae)                                                  & DNA\_Repair                                                \\ 
+CTNNAL1       & catenin (cadherin-associated protein)  alpha-like 1                                                       & Human\_Epithelial\_to\_Mesenchymal\_Transition\_(EMT)      \\ 
+DSP           & desmoplakin                                                                                               & Human\_Epithelial\_to\_Mesenchymal\_Transition\_(EMT)      \\ 
+TGIF1         & TGFB-induced factor homeobox 1                                                                            & Human\_Epithelial\_to\_Mesenchymal\_Transition\_(EMT)      \\ 
+YES1          & v-yes-1 Yamaguchi sarcoma viral oncogene homolog 1                                                        & Human\_Epithelial\_to\_Mesenchymal\_Transition\_(EMT)      \\ 
+HDAC2         & histone deacetylase 2                                                                                     & Human\_Notch\_Signaling\_Pathway                           \\ 
+CD274         & CD274 molecule                                                                                            & Human\_T-Cell\_B-Cell\_Activation\_Methylation             \\ 
+IL12A         & interleukin 12A (natural killer cell stimulatory factor 1  cytotoxic lymphocyte maturation factor 1  p35) & Human\_T-Cell\_B-Cell\_Activation\_Methylation             \\ 
+RIPK2         & receptor-interacting serine-threonine kinase 2                                                            & Human\_T-Cell\_B-Cell\_Activation\_Methylation             \\ 
+IRF8          & interferon regulatory factor 8                                                                            & Human\_T\_Helper\_Cell\_Differentiation                    \\ 
+PERP          & PERP  TP53 apoptosis effector                                                                             & Human\_T\_Helper\_Cell\_Differentiation                    \\ 
+TGIF1         & TGFB-induced factor homeobox 1                                                                            & Human\_T\_Helper\_Cell\_Differentiation                    \\ 
+TNFSF11       & tumor necrosis factor (ligand) superfamily  member 11                                                     & Human\_T\_Helper\_Cell\_Differentiation                    \\ \hline
+\end{tabular}}
 \end{table}
 
 
 
-DEVA was also run with a changed cutoff of -5000 to +1500 to produce peak files. A similar pipeline was run as with the new peak files as described above for pathway analysis. The results were different as expected because of a bigger window size. 
-
-\captionof{table}{Number of features in each cell line with extended window}
-\begin{table}[H]
-\centering
-	\begin{tabular}{|l|l|l|}
-	\hline
-		Cell line & Feature Track & Number of features \\ \hline
-		H460 Knock in & transcription start site & 3877 \\ \hline
-		H460 Parent & transcription start site & 2639 \\ \hline
-	\end{tabular}
-\end{table}
-
-The pathway analysis showed, in the H460 Knock-in gene set 189 genes were observed in 18 pathways and in the H460 parent gene set 70 genes were observed in 19 pathways. 
-%Please click on references 5 and 6 for H460 knock-in and H460 parent respectively.
-
-The links are provided for both the tables with links and full listed in the supplementary section.
-
-\begin{enumerate}
-
-	\item \href{https://app.box.com/s/7xr01qkv3xx41oo5izew}{H460 knock-in genes with corresponding pathways, with changed cutoff of -5000 to +1500.(https://app.box.com/s/7xr01qkv3xx41oo5izew)} 
-%	
-	\item \href{https://app.box.com/s/pu0n89gusqlf1umjwwhh}{H460 parent genes with corresponding pathways,  with changed cutoff of -5000 to +1500.(https://app.box.com/s/pu0n89gusqlf1umjwwhh)}
-\end{enumerate}
+%%Table 7 describes the number of features in each cell line. 
+%%
+%%\captionof{table}{Number of features in each cell line with extended window}
+%\begin{table}[H]
+%\centering
+%	\begin{tabular}{|l|l|l|}
+%	\hline
+%		Cell line & Feature Track & Number of features \\ \hline
+%		H460 Knock in & transcription start site & 3877 \\ \hline
+%		H460 Parent & transcription start site & 2639 \\ \hline
+%	\end{tabular}
+%\end{table}
 
 
 
@@ -381,7 +438,15 @@ Biostatistics, 12(2):197-210, 2011.
 
 \end{enumerate}
 
- \begin{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Supplementary Tables}  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The results of the pathway analysis and their links are provided.
+
+\begin{enumerate}
 
 	\item \href{https://app.box.com/s/7xr01qkv3xx41oo5izew}{H460 knock-in genes with corresponding pathways, with changed cutoff of -5000 to +1500.(https://app.box.com/s/7xr01qkv3xx41oo5izew)} 
 %	
@@ -389,13 +454,8 @@ Biostatistics, 12(2):197-210, 2011.
 \end{enumerate}
 
  
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Supplementary}  
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+
  
- 
- 
- 
- \end{document}
+\end{document}
 
 
