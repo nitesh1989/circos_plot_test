@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.16)  5 FEB 2014 16:32
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.16)  6 FEB 2014 10:48
 entering extended mode
 **report_biswal.tex
 
@@ -662,42 +662,49 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 311.
 See the caption package documentation for explanation.
 
-[6]
+<BiswalCircosMain.png, id=68, 2168.1pt x 2168.1pt>
+File: BiswalCircosMain.png Graphic file (type png)
+ <use BiswalCircosMain.png>
+Package pdftex.def Info: BiswalCircosMain.png used on input line 374.
+(pdftex.def)             Requested size: 433.61232pt x 433.61232pt.
+
+[6] [7 <C:/Users/nturaga1/Documents/TestRun/ShyamBiswal/circos_plot_test/Biswal
+CircosMain.png>]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
 
-Underfull \hbox (badness 1024) in paragraph at lines 451--453
+Underfull \hbox (badness 1024) in paragraph at lines 440--442
 [][]\OT1/cmr/m/n/10.95 H460 knock-in genes with cor-re-spond-ing path-ways, wit
 h changed cut-off of -5000 to
  []
 
 
-Underfull \hbox (badness 1874) in paragraph at lines 453--454
+Underfull \hbox (badness 1874) in paragraph at lines 442--443
 [][]\OT1/cmr/m/n/10.95 H460 par-ent genes with cor-re-spond-ing path-ways, with
  changed cut-off of -5000 to
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 459.
-[7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 459.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 448.
+[8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 448.
 
 (C:\Users\nturaga1\Documents\TestRun\ShyamBiswal\circos_plot_test\report_biswal
 .aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 459.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 459.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 448.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 448.
 Package rerunfilecheck Info: File `report_biswal.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 459.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 448.
  ) 
 Here is how much of TeX's memory you used:
- 9105 strings out of 493921
- 142032 string characters out of 3136445
+ 9111 strings out of 493921
+ 142157 string characters out of 3136445
  261105 words of memory out of 3000000
- 12228 multiletter control sequences out of 15000+200000
+ 12232 multiletter control sequences out of 15000+200000
  11353 words of font info for 43 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 41i,12n,51p,892b,446s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,12n,51p,892b,448s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb><C:/Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fo
 nts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/nturaga1/Downloads/MiKTeX/set
@@ -705,9 +712,9 @@ up/MiKTekInstall/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/nturaga1/Do
 wnloads/MiKTeX/setup/MiKTekInstall/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
 /Users/nturaga1/Downloads/MiKTeX/setup/MiKTekInstall/fonts/type1/public/amsfont
 s/cm/cmr17.pfb>
-Output written on report_biswal.pdf (7 pages, 230105 bytes).
+Output written on report_biswal.pdf (8 pages, 2095888 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 54 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 137 PDF objects out of 1000 (max. 8388607)
+ 55 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
